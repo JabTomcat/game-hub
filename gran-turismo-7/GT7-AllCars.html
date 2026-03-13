@@ -315,6 +315,13 @@
   </footer>
 
 <script>
+  function imgFallback(img) {
+    const wrap = img.parentElement;
+    const col  = wrap.dataset.color || '#1a1a28';
+    const inits = wrap.dataset.initials || '?';
+    wrap.innerHTML = `<div class="car-img-fallback" style="background:${col}"><span class="fallback-initials">${inits}</span></div>`;
+  }
+
   const MAKER_COL = {
     'Alfa Romeo':'#8b1010','Aston Martin':'#003d2e','Audi':'#700010',
     'BMW':'#0a306a','Chevrolet':'#786000','Citroën':'#5a1018',
@@ -406,9 +413,8 @@
         const inits    = initials(c.Make);
 
         const imgHTML = hasPic
-          ? `<div class="car-img-wrap">
-               <img src="${c.Picture}" alt="${c.Make} ${c.Model}" loading="lazy"
-                 onerror="this.parentElement.innerHTML='<div class=\\'car-img-fallback\\" style=\\"background:${col}\\"><span class=\\'fallback-initials\\'>${inits}</span></div>';" />
+          ? `<div class="car-img-wrap" data-color="${col}" data-initials="${inits}">
+               <img src="${c.Picture}" alt="${c.Make} ${c.Model}" loading="lazy" onerror="imgFallback(this)" />
              </div>`
           : `<div class="car-img-wrap">
                <div class="car-img-fallback" style="background:${col}">
