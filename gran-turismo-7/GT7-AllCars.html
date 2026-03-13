@@ -251,14 +251,25 @@
       padding: 8px 12px;
       border-top: 1px solid var(--border);
       background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .gt7-link {
+    .owned-btn {
       font-family: var(--font-pixel);
       font-size: 7px;
-      color: var(--red);
+      padding: 4px 8px;
+      border: 2px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      cursor: pointer;
       letter-spacing: 1px;
-      text-decoration: none;
+      transition: all 0.1s;
+      -webkit-tap-highlight-color: transparent;
     }
+    .owned-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .owned-btn.is-owned { border-color: var(--blue); background: rgba(64,128,224,0.15); color: var(--blue); }
+    .gt7-link { font-family: var(--font-pixel); font-size: 7px; color: var(--red); letter-spacing: 1px; text-decoration: none; }
     .gt7-link:hover { color: var(--gold); }
 
     @media (max-width: 500px) { .car-grid { grid-template-columns: 1fr; } }
@@ -296,6 +307,8 @@
     <select class="sort-select" id="srt">
       <option value="name">NAME A–Z</option>
       <option value="make">MAKE A–Z</option>
+      <option value="pp-asc">PP LOW → HIGH</option>
+      <option value="pp-desc">PP HIGH → LOW</option>
     </select>
   </div>
 
@@ -335,6 +348,94 @@
     const col  = wrap.dataset.color || '#1a1a28';
     const inits = wrap.dataset.initials || '?';
     wrap.innerHTML = `<div class="car-img-fallback" style="background:${col}"><span class="fallback-initials">${inits}</span></div>`;
+  }
+
+  // ── Owned cars (synced via JSONBin) ──
+  const JSONBIN_KEY = '$2a$10$UCj9225GE/3qlvwdDY8RfOCEbsbHFczb3qzTx1m4mFE1M8kR8V9IS';
+  const JSONBIN_API = 'https://api.jsonbin.io/v3';
+  const LS_BIN_ID   = 'gt7-owned-bin-id';
+
+  let OWNED   = new Set();
+  let BIN_ID  = localStorage.getItem(LS_BIN_ID) || null;
+  let saveTimer = null;
+
+  // Load owned list from JSONBin on page load
+  async function loadOwned() {
+    try {
+      if (!BIN_ID) return; // No bin yet — nothing to load
+      const res = await fetch(`${JSONBIN_API}/b/${BIN_ID}/latest`, {
+        headers: { 'X-Master-Key': JSONBIN_KEY }
+      });
+      if (!res.ok) throw new Error('Load failed');
+      const data = await res.json();
+      OWNED = new Set(data.record.owned || []);
+      // Refresh any already-rendered buttons
+      document.querySelectorAll('.owned-btn').forEach(btn => {
+        const isOwned = OWNED.has(btn.dataset.key);
+        btn.classList.toggle('is-owned', isOwned);
+        btn.textContent = isOwned ? '✓ OWNED' : 'NOT OWNED';
+      });
+    } catch(e) {
+      console.warn('Could not load owned list:', e);
+    }
+  }
+
+  // Save owned list to JSONBin (debounced — waits 800ms after last toggle)
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveOwned, 800);
+  }
+
+  async function saveOwned() {
+    try {
+      const body = JSON.stringify({ owned: [...OWNED] });
+      if (!BIN_ID) {
+        // First save — create a new bin
+        const res = await fetch(`${JSONBIN_API}/b`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': JSONBIN_KEY,
+            'X-Bin-Name': 'gt7-owned',
+            'X-Bin-Private': 'false'
+          },
+          body
+        });
+        if (!res.ok) throw new Error('Create failed');
+        const data = await res.json();
+        BIN_ID = data.metadata.id;
+        localStorage.setItem(LS_BIN_ID, BIN_ID);
+      } else {
+        // Update existing bin
+        const res = await fetch(`${JSONBIN_API}/b/${BIN_ID}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': JSONBIN_KEY
+          },
+          body
+        });
+        if (!res.ok) throw new Error('Update failed');
+      }
+    } catch(e) {
+      console.warn('Could not save owned list:', e);
+    }
+  }
+
+  function toggleOwned(btn, e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const key = btn.dataset.key;
+    if (OWNED.has(key)) {
+      OWNED.delete(key);
+      btn.classList.remove('is-owned');
+      btn.textContent = 'NOT OWNED';
+    } else {
+      OWNED.add(key);
+      btn.classList.add('is-owned');
+      btn.textContent = '✓ OWNED';
+    }
+    scheduleSave();
   }
 
   const MAKER_COL = {
@@ -396,8 +497,10 @@
       return matchQ && matchC;
     });
 
-    if (srt === 'make') list.sort((a,b) => (a.Make+a.Model).localeCompare(b.Make+b.Model));
-    else list.sort((a,b) => a.Model.localeCompare(b.Model));
+    if (srt === 'make')         list.sort((a,b) => (a.Make+a.Model).localeCompare(b.Make+b.Model));
+    else if (srt === 'pp-asc')  list.sort((a,b) => (parseFloat(a.PP)||0) - (parseFloat(b.PP)||0));
+    else if (srt === 'pp-desc') list.sort((a,b) => (parseFloat(b.PP)||0) - (parseFloat(a.PP)||0));
+    else                        list.sort((a,b) => a.Model.localeCompare(b.Model));
 
     document.getElementById('cnt').innerHTML = `▣ <span>${list.length.toLocaleString()}</span> CARS FOUND`;
 
@@ -426,6 +529,9 @@
         const catLabel = c.Category || '???';
         const ppText   = c.PP ? 'PP ' + c.PP : '';
         const inits    = initials(c.Make);
+
+        const ownedKey = c.Make + '|' + c.Model;
+        const owned = OWNED.has(ownedKey);
 
         const imgHTML = hasPic
           ? `<div class="car-img-wrap" data-color="${col}" data-initials="${inits}">
@@ -467,10 +573,12 @@
             <div class="spec"><div class="spec-label">CLASS</div><div class="spec-val" style="font-size:7px">${catLabel}</div></div>
             <div class="spec"><div class="spec-label">PP</div><div class="spec-val" style="color:var(--gold)">${c.PP || '—'}</div></div>
           </div>
-          ${gtLink ? `
           <div class="car-card-footer">
-            <a href="${gtLink}" target="_blank" rel="noopener" class="gt7-link" onclick="event.stopPropagation()">VIEW ON GT7 ↗</a>
-          </div>` : ''}`;
+            <span>${gtLink ? `<a href="${gtLink}" target="_blank" rel="noopener" class="gt7-link" onclick="event.stopPropagation()">VIEW ON GT7 ↗</a>` : ''}</span>
+            <button class="owned-btn ${owned ? 'is-owned' : ''}" data-key="${c.Make}|${c.Model}" onclick="toggleOwned(this, event)">
+              ${owned ? '✓ OWNED' : 'NOT OWNED'}
+            </button>
+          </div>`;
 
         frag.appendChild(el);
       }
@@ -528,6 +636,7 @@
   });
 
   loadCars();
+  loadOwned();
 </script>
 
 </body>
