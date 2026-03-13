@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assassin Leveling Guide — D2R — Game Hub</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    /* ── Level range section headers ── */
+    .level-range {
+      font-family: var(--font-pixel);
+      font-size: 10px;
+      color: var(--gold);
+      padding: 10px 14px;
+      background: var(--panel);
+      border: 2px solid var(--gold-dim);
+      margin: 2rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+```
+.level-range::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+/* ── Tables ── */
+.data-table { margin-bottom: 1.5rem; }
+
+.data-table td.highlight { color: var(--gold); }
+.data-table td.stat-str  { color: #f4845f; }
+.data-table td.stat-dex  { color: #70b0ff; }
+.data-table td.stat-vit  { color: #7ec87e; }
+.data-table td.stat-en   { color: #c07ef0; }
+.data-table td.note      { color: var(--text-dim); font-size: 16px; }
+
+/* ── Gear grid ── */
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.gear-slot {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  padding: 10px 12px;
+}
+
+.gear-slot-name {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.gear-item {
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+
+.gear-note {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+/* ── Tip box ── */
+.tip-box {
+  border: 2px solid var(--blue);
+  background: rgba(64,128,224,0.07);
+  padding: 12px 16px;
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.tip-box .tip-label {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--blue);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-eyebrow">★ DIABLO II RESURRECTED ★</div>
+    <h1 class="site-title">ASSASSIN<br>LEVELING GUIDE</h1>
+    <p class="site-subtitle">NORMAL · NIGHTMARE · HELL</p>
+    <div class="hp-bar-wrap">
+      <span>HP</span>
+      <div class="hp-bar"><div class="hp-fill"></div></div>
+      <span>LVL 1 → 75</span>
+    </div>
+  </header>
+
+  <nav class="breadcrumb">
+    <a href="../../index.html">HUB</a>
+    <span class="sep">▶</span>
+    <a href="../index.html">DIABLO II RESURRECTED</a>
+    <span class="sep">▶</span>
+    <a href="index.html">ASSASSIN</a>
+    <span class="sep">▶</span>
+    <span class="current">LEVELING</span>
+  </nav>
+
+  <div class="divider">LEVELING GUIDE</div>
+
+  <main class="container">
+
+```
+<div class="stats-bar">
+  <div class="stat"><span class="stat-label">BUILD PATH</span><span class="stat-val">TRAPSIN</span></div>
+  <div class="stat"><span class="stat-label">DIFFICULTY</span><span class="stat-val">NOR → HELL</span></div>
+  <div class="stat"><span class="stat-label">MAIN SKILL</span><span class="stat-val">LGT SENTRY</span></div>
+  <div class="stat"><span class="stat-label">PLAYSTYLE</span><span class="stat-val">RANGED</span></div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">▍ OVERVIEW</div>
+  You are leveling toward a Lightning Sentry Trapsin. Before you unlock Lightning Sentry (level 18 skill, requires Fire Blast → Lightning Sentry prereqs), you will use Claws and early traps to carry you through Normal. The goal is to have Lightning Sentry online as early as possible and pump it hard from there.
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<div class="level-range">LVL 1 — 17 · EARLY GAME</div>
+
+<div class="section-label">▍ SKILL POINTS</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>LEVEL</th>
+      <th>SKILL POINT INTO</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="highlight">1</td><td>Fire Blast</td><td class="note">Prereq for Lightning Sentry</td></tr>
+    <tr><td class="highlight">6</td><td>Shock Web</td><td class="note">Prereq for Lightning Sentry</td></tr>
+    <tr><td class="highlight">12</td><td>Blade Sentinel</td><td class="note">Prereq for Death Sentry</td></tr>
+    <tr><td class="highlight">12</td><td>Charged Bolt Sentry</td><td class="note">Prereq for Lightning Sentry</td></tr>
+    <tr><td class="highlight">6–17</td><td>1 point each prereq</td><td class="note">Just enough to unlock Lightning Sentry at 18</td></tr>
+  </tbody>
+</table>
+
+<div class="section-label">▍ STAT POINTS</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>STAT</th>
+      <th>TARGET</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="stat-str">Strength</td><td>Enough for gear</td><td class="note">Only add what your gear needs</td></tr>
+    <tr><td class="stat-dex">Dexterity</td><td>Enough for gear</td><td class="note">Only add what your gear needs</td></tr>
+    <tr><td class="stat-vit">Vitality</td><td>All remaining points</td><td class="note">Dump everything here — stay alive</td></tr>
+    <tr><td class="stat-en">Energy</td><td>None</td><td class="note">Never put points in Energy</td></tr>
+  </tbody>
+</table>
+
+<div class="section-label">▍ GEAR — EARLY GAME</div>
+<div class="gear-grid">
+  <div class="gear-slot">
+    <div class="gear-slot-name">WEAPON</div>
+    <div class="gear-item">Any Claw</div>
+    <div class="gear-note">Preferably with +skills or IAS. Vendors or drops.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">OFFHAND</div>
+    <div class="gear-item">Any Claw or Shield</div>
+    <div class="gear-note">Shield with resistances if you have one.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">HELM</div>
+    <div class="gear-item">Any with +skills or life</div>
+    <div class="gear-note">Vendor or set/magic items as you find them.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">ARMOR</div>
+    <div class="gear-item">Any with life / resistances</div>
+    <div class="gear-note">Prioritize resistances in Nightmare.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BOOTS</div>
+    <div class="gear-item">Hsarus' Iron Heel or similar</div>
+    <div class="gear-note">Move speed and life where possible.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BELT</div>
+    <div class="gear-item">Any with life / resist</div>
+    <div class="gear-note">Vendor belt until a better drop.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">GLOVES</div>
+    <div class="gear-item">Any magic gloves</div>
+    <div class="gear-note">IAS or +trap skills are great if you find them.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">AMULET</div>
+    <div class="gear-item">Any with +skills or life</div>
+    <div class="gear-note">Magic amulet from vendors or drops.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">RINGS</div>
+    <div class="gear-item">Any with life / resist</div>
+    <div class="gear-note">Two rings — mana leech or life leech helpful.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<div class="level-range">LVL 18 — 30 · LIGHTNING SENTRY ONLINE</div>
+
+<div class="tip-box">
+  <div class="tip-label">▍ KEY MILESTONE</div>
+  At level 18 you unlock Lightning Sentry. This is the core of your build. From here, pump it every level. You should also pick up Death Sentry when you hit level 24 — its corpse explosion synergizes perfectly with your traps.
+</div>
+
+<div class="section-label">▍ SKILL POINTS</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>LEVEL</th>
+      <th>SKILL POINT INTO</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="highlight">18</td><td>Lightning Sentry ×1</td><td class="note">Unlock and immediately start pumping</td></tr>
+    <tr><td class="highlight">18–23</td><td>Lightning Sentry</td><td class="note">Every point here</td></tr>
+    <tr><td class="highlight">24</td><td>Death Sentry ×1</td><td class="note">Unlock — 1 point is enough for now</td></tr>
+    <tr><td class="highlight">25–30</td><td>Lightning Sentry</td><td class="note">Back to pumping LS every level</td></tr>
+  </tbody>
+</table>
+
+<div class="section-label">▍ STAT POINTS</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>STAT</th>
+      <th>TARGET</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="stat-str">Strength</td><td>Gear req only</td><td class="note">Check what your next gear upgrade needs</td></tr>
+    <tr><td class="stat-dex">Dexterity</td><td>Gear req only</td><td class="note">Most Assassin gear is not dex heavy</td></tr>
+    <tr><td class="stat-vit">Vitality</td><td>All remaining</td><td class="note">Still dumping everything into Vitality</td></tr>
+    <tr><td class="stat-en">Energy</td><td>None</td><td class="note">Never</td></tr>
+  </tbody>
+</table>
+
+<div class="section-label">▍ GEAR — MID GAME</div>
+<div class="gear-grid">
+  <div class="gear-slot">
+    <div class="gear-slot-name">WEAPON</div>
+    <div class="gear-item">+Trap Skills Claw</div>
+    <div class="gear-note">Look for magic/rare claws with +Lightning Sentry or +Traps.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">OFFHAND</div>
+    <div class="gear-item">Spirit Sword (if available)</div>
+    <div class="gear-note">Runeword: Tal+Thul+Ort+Amn. +2 skills, FCR, mana.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">HELM</div>
+    <div class="gear-item">Peasant Crown / Lore</div>
+    <div class="gear-note">Lore runeword (Ort+Sol) gives +1 skills. Easy to make.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">ARMOR</div>
+    <div class="gear-item">Stealth (Tal+Eth)</div>
+    <div class="gear-note">Easy runeword. FCR and FRW, great for leveling.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BOOTS</div>
+    <div class="gear-item">Rare with resists + FRW</div>
+    <div class="gear-note">Faster Run/Walk is very useful for trap placement.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BELT</div>
+    <div class="gear-item">Goldwrap or Rare</div>
+    <div class="gear-note">MF or life/resist belt.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">GLOVES</div>
+    <div class="gear-item">Rare with +trap skills / IAS</div>
+    <div class="gear-note">+2 Traps gloves are a big upgrade if you find them.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">AMULET</div>
+    <div class="gear-item">+2 Assassin Skills amulet</div>
+    <div class="gear-note">Rare or magic. +skills amulet is a major boost.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">RINGS</div>
+    <div class="gear-item">Stone of Jordan or rare</div>
+    <div class="gear-note">+1 skills and mana. Two SoJs is best in slot if you have them.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<div class="level-range">LVL 30 — 75 · NIGHTMARE & HELL</div>
+
+<div class="tip-box">
+  <div class="tip-label">▍ PRIORITIES</div>
+  Keep pumping Lightning Sentry. Max it out, then pump Death Sentry for the corpse explosion. Max Fire Blast last for the synergy bonus to Lightning Sentry damage. You want all resistances at 75% cap before entering Nightmare and Hell — gear for resists aggressively.
+</div>
+
+<div class="section-label">▍ SKILL POINTS — PRIORITY ORDER</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>PRIORITY</th>
+      <th>SKILL</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="highlight">1st</td><td>Lightning Sentry</td><td class="note">Max this first — 20 points</td></tr>
+    <tr><td class="highlight">2nd</td><td>Death Sentry</td><td class="note">Max for corpse explosion — 20 points</td></tr>
+    <tr><td class="highlight">3rd</td><td>Fire Blast</td><td class="note">Synergy to LS damage — 20 points</td></tr>
+    <tr><td class="highlight">4th</td><td>Charged Bolt Sentry</td><td class="note">Synergy to LS — remaining points</td></tr>
+    <tr><td class="highlight">Utility</td><td>Burst of Speed ×1</td><td class="note">1 point — huge quality of life for movement</td></tr>
+    <tr><td class="highlight">Utility</td><td>Fade ×1</td><td class="note">1 point — resistances and curse reduction in Hell</td></tr>
+    <tr><td class="highlight">Utility</td><td>Shadow Master ×1</td><td class="note">1 point — useful companion</td></tr>
+  </tbody>
+</table>
+
+<div class="section-label">▍ STAT POINTS — FINAL TARGETS</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>STAT</th>
+      <th>FINAL TARGET</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="stat-str">Strength</td><td>Enough for gear</td><td class="note">Typically ~100–120 depending on endgame gear</td></tr>
+    <tr><td class="stat-dex">Dexterity</td><td>Enough for gear</td><td class="note">Usually minimal — Assassins don't need much</td></tr>
+    <tr><td class="stat-vit">Vitality</td><td>Everything else</td><td class="note">Target 1000+ life with gear</td></tr>
+    <tr><td class="stat-en">Energy</td><td>Base (25)</td><td class="note">Never invest here</td></tr>
+  </tbody>
+</table>
+
+<div class="section-label">▍ GEAR — LATE GAME / TRANSITION</div>
+<div class="gear-grid">
+  <div class="gear-slot">
+    <div class="gear-slot-name">WEAPON</div>
+    <div class="gear-item">+3 Traps Claw</div>
+    <div class="gear-note">Best in slot for leveling. Look for magic/rare claws with +3 Lightning Sentry.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">OFFHAND</div>
+    <div class="gear-item">Spirit / +3 Traps Claw</div>
+    <div class="gear-note">Spirit runeword for FCR and +skills, or dual claw for more trap levels.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">HELM</div>
+    <div class="gear-item">Shako (Harlequin Crest)</div>
+    <div class="gear-note">Best in slot. +2 all skills, life, mana, DR. Farm Nightmare if you can.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">ARMOR</div>
+    <div class="gear-item">Enigma or Duress</div>
+    <div class="gear-note">Enigma is endgame BiS. Duress is a great stepping stone with resists.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BOOTS</div>
+    <div class="gear-item">Silkweave or Rare</div>
+    <div class="gear-note">Mana after kills + FRW. Or rare boots with tri-resist.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BELT</div>
+    <div class="gear-item">Nosferatu's Coil or Rare</div>
+    <div class="gear-note">IAS helps trap laying speed. Or rare with life/resist.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">GLOVES</div>
+    <div class="gear-item">Magefist or Rare +traps</div>
+    <div class="gear-note">FCR gloves help hit breakpoints. +2 Traps rare is better if you find one.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">AMULET</div>
+    <div class="gear-item">+2 Assassin Skills</div>
+    <div class="gear-note">Rare or crafted amulet with +2 Assassin skills and resists.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">RINGS</div>
+    <div class="gear-item">Stone of Jordan ×2</div>
+    <div class="gear-note">+1 skills each. Or Raven Frost + rare ring for cannot be frozen.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">CHARMS</div>
+    <div class="gear-item">Resistance / Life SCs</div>
+    <div class="gear-note">Small charms with life and resist. Cap all resists at 75% in Hell.</div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">▍ RESISTANCE REMINDER</div>
+  Hell difficulty applies a -100% resistance penalty. You need 175% total resist from gear to cap at 75%. Prioritize this before attempting Hell. Use Fade (1 point) as a temporary fix while you gear up — it provides a huge resist bonus.
+</div>
+```
+
+  </main>
+
+  <footer class="site-footer">
+    <span>█</span> GAME HUB &nbsp;·&nbsp; GITHUB PAGES <span>█</span>
+  </footer>
+
+</body>
+</html>
