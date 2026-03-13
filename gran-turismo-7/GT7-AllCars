@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GT7 Car Reference — Game Hub</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* ── Page-specific styles ── */
+
+```
+/* Controls bar */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 0 1.5rem 0.5rem;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-wrap svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+input[type="search"], .sort-select {
+  height: 38px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-retro);
+  font-size: 18px;
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="search"] {
+  width: 100%;
+  padding: 0 10px 0 32px;
+}
+
+input[type="search"]:focus {
+  border-color: var(--gold);
+}
+
+.sort-select {
+  padding: 0 30px 0 10px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23707088' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-color: var(--panel);
+}
+
+/* Category chips */
+.chips-wrap {
+  padding: 0 1.5rem 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chips-wrap::-webkit-scrollbar { display: none; }
+
+.chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.chip {
+  height: 32px;
+  padding: 0 12px;
+  border: 2px solid var(--border);
+  background: var(--panel);
+  color: var(--text-dim);
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+.chip.on {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+
+.chip:hover:not(.on) {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Count bar */
+.count-bar {
+  padding: 0 1.5rem 1rem;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+.count-bar span { color: var(--green); }
+
+/* Loading / error state */
+.state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  gap: 16px;
+  color: var(--text-dim);
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Car grid */
+.car-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  margin-bottom: var(--gap-lg);
+}
+
+/* Car card */
+.car-card {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 0.1s, transform 0.1s;
+  overflow: hidden;
+}
+
+.car-card:hover {
+  border-color: var(--gold);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--gold-dim);
+}
+
+.car-card:hover .card-corner { opacity: 1; }
+
+/* Maker banner */
+.car-banner {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.car-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(0,0,0,0.5) 0%, transparent 60%);
+}
+
+.banner-initials {
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  color: rgba(255,255,255,0.15);
+  position: relative;
+  z-index: 1;
+  letter-spacing: 2px;
+}
+
+.cat-badge {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  padding: 3px 7px;
+  letter-spacing: 1px;
+}
+
+/* Category badge colours */
+.cat-gr1   { background: rgba(180,60,20,.3);  color: #f4845f; border: 1px solid rgba(180,60,20,.5); }
+.cat-gr2   { background: rgba(160,80,200,.3); color: #c07ef0; border: 1px solid rgba(160,80,200,.5); }
+.cat-gr3   { background: rgba(220,0,40,.3);   color: #ff6080; border: 1px solid rgba(220,0,40,.5); }
+.cat-gr4   { background: rgba(20,100,220,.3); color: #70b0ff; border: 1px solid rgba(20,100,220,.5); }
+.cat-grb   { background: rgba(20,160,80,.3);  color: #60d090; border: 1px solid rgba(20,160,80,.5); }
+.cat-gt500 { background: rgba(0,140,180,.3);  color: #40c8f0; border: 1px solid rgba(0,140,180,.5); }
+.cat-vgt   { background: rgba(200,160,0,.3);  color: #e0b840; border: 1px solid rgba(200,160,0,.5); }
+.cat-road  { background: rgba(100,100,100,.2);color: #aaa;    border: 1px solid rgba(100,100,100,.4); }
+.cat-race  { background: rgba(220,0,40,.3);   color: #ff6080; border: 1px solid rgba(220,0,40,.5); }
+.cat-rally { background: rgba(20,160,80,.3);  color: #60d090; border: 1px solid rgba(20,160,80,.5); }
+
+/* Card body */
+.car-body {
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.car-name {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--gold);
+  line-height: 1.6;
+}
+
+.car-make {
+  font-size: 14px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Spec pills */
+.car-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.spec {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 5px 7px;
+}
+
+.spec-label {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.spec-val {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* Drivetrain badge */
+.drive-badge {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  padding: 2px 5px;
+  letter-spacing: 1px;
+}
+
+.drive-FR  { background: rgba(40,120,40,.2);   color: #7ec87e; border: 1px solid rgba(40,120,40,.4); }
+.drive-MR  { background: rgba(30,90,170,.2);   color: #70aae8; border: 1px solid rgba(30,90,170,.4); }
+.drive-FF  { background: rgba(120,80,20,.2);   color: #c8a060; border: 1px solid rgba(120,80,20,.4); }
+.drive-AWD { background: rgba(100,30,120,.2);  color: #c080e0; border: 1px solid rgba(100,30,120,.4); }
+.drive-RR  { background: rgba(180,60,20,.2);   color: #f4845f; border: 1px solid rgba(180,60,20,.4); }
+
+/* Card footer */
+.car-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-pixel);
+  font-size: 7px;
+}
+
+.gtdb-link {
+  color: var(--red);
+  letter-spacing: 1px;
+  animation: none;
+}
+
+.car-card:hover .gtdb-link {
+  color: var(--gold);
+}
+
+@media (max-width: 500px) {
+  .car-grid { grid-template-columns: 1fr; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+
+  <header class="site-header">
+    <div class="header-eyebrow">★ GAME HUB ★</div>
+    <h1 class="site-title">GRAN TURISMO 7</h1>
+    <p class="site-subtitle">CAR REFERENCE · <span id="ver" style="color:var(--green)">LOADING...</span></p>
+    <div class="hp-bar-wrap">
+      <span>HP</span>
+      <div class="hp-bar"><div class="hp-fill"></div></div>
+      <span>GARAGE: FULL</span>
+    </div>
+  </header>
+
+  <!-- ── BREADCRUMB ── -->
+
+  <nav class="breadcrumb">
+    <a href="../index.html">HUB</a>
+    <span class="sep">▶</span>
+    <span class="current">GRAN TURISMO 7</span>
+  </nav>
+
+  <div class="divider">SEARCH THE GARAGE</div>
+
+  <!-- ── CONTROLS ── -->
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="8.5" cy="8.5" r="5.5"/>
+        <path d="M15 15l-3-3"/>
+      </svg>
+      <input type="search" id="q" placeholder="Search make or model..." autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </div>
+    <select class="sort-select" id="srt">
+      <option value="name">NAME A–Z</option>
+      <option value="make">MAKE A–Z</option>
+    </select>
+  </div>
+
+  <!-- ── CATEGORY CHIPS ── -->
+
+  <div class="chips-wrap">
+    <div class="chips" id="cats">
+      <button class="chip on" data-cat="">ALL</button>
+      <button class="chip" data-cat="gr1">GR.1</button>
+      <button class="chip" data-cat="gr2">GR.2</button>
+      <button class="chip" data-cat="gr3">GR.3</button>
+      <button class="chip" data-cat="gr4">GR.4</button>
+      <button class="chip" data-cat="grb">GR.B</button>
+      <button class="chip" data-cat="gt500">GT500</button>
+      <button class="chip" data-cat="vgt">VGT</button>
+      <button class="chip" data-cat="road">ROAD</button>
+      <button class="chip" data-cat="rally">RALLY</button>
+    </div>
+  </div>
+
+  <!-- ── COUNT BAR ── -->
+
+  <div class="count-bar" id="cnt"></div>
+
+  <!-- ── CAR GRID ── -->
+
+  <main class="container">
+    <div class="car-grid" id="grid">
+      <div class="state">
+        <div class="spinner"></div>
+        <span>FETCHING CAR DATA...</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>█</span> GAME HUB &nbsp;·&nbsp; CAR DATA VIA GTDB.IO &nbsp;·&nbsp; GITHUB PAGES <span>█</span>
+  </footer>
+
+<script>
+const MAKERS = {
+  3:'Alfa Romeo',4:'Aston Martin',5:'Audi',6:'BMW',7:'Chevrolet',
+  9:'Citroën',10:'Daihatsu',11:'Dodge',12:'Fiat',13:'Ford',15:'Honda',
+  16:'Hyundai',17:'Jaguar',18:'Lancia',21:'Mazda',22:'Mercedes-Benz',
+  25:'Mitsubishi',28:'Nissan',30:'Pagani',32:'Peugeot',33:'Gran Turismo',
+  34:'Renault',35:'RUF',36:'Shelby',38:'Subaru',39:'Suzuki',
+  43:'Toyota',44:'TVR',46:'Volkswagen',49:'Infiniti',50:'Lexus',
+  51:'MINI',52:'Pontiac',55:'Plymouth',57:'Autobianchi',59:'Amuse',
+  65:'DMC',69:'Volvo',86:'Alpine',87:'RE Amemiya',93:'Chaparral',
+  110:'Ferrari',112:'Lamborghini',113:'Bugatti',116:'Maserati',
+  117:'McLaren',119:'Tesla',121:'KTM',125:'Abarth',134:'Zagato',
+  135:'Italdesign',136:'Porsche',140:'De Tomaso',141:'Radical',
+  143:'Super Formula',144:'Briggs Automotive',146:'Willys',147:'CHC',
+  148:"Eckert's Rod",149:'Greddy',150:'Wicked Fab',151:'Roadster Shop',
+  152:'Genesis',153:'AMG',154:'DS Automobiles',155:'NISMO',156:'Greening Auto',
+  157:'Garage RCR',158:'BVLGARI',159:'SKODA',160:'AFEELA',161:'Opel',
+  162:"Mine's",163:'Polestar',164:'Xiaomi'
+};
+
+const MAKER_COL = {
+  'Alfa Romeo':'#8b1010','Aston Martin':'#003d2e','Audi':'#700010',
+  'BMW':'#0a306a','Chevrolet':'#786000','Citroën':'#5a1018',
+  'Dodge':'#780818','Ferrari':'#880018','Ford':'#081e4a',
+  'Honda':'#680808','Hyundai':'#001858','Jaguar':'#102244',
+  'Lamborghini':'#605000','Lexus':'#222228','Mazda':'#4a0014',
+  'McLaren':'#6a3800','Mercedes-Benz':'#103040','Mitsubishi':'#6a0808',
+  'Nissan':'#6a0014','Porsche':'#5a0808','Subaru':'#002058',
+  'Toyota':'#6a0010','Volkswagen':'#00386a','Genesis':'#101020',
+  'AMG':'#081828','Peugeot':'#001e44','Renault':'#6a0808',
+  'Alpine':'#002868','Bugatti':'#1a0030','Maserati':'#00102e',
+  'Pagani':'#180028','Gran Turismo':'#1a0a00','Super Formula':'#0a1a00',
+  'Abarth':'#5a1010'
+};
+
+const CAT_LABEL = {
+  gr1:'GR.1',gr2:'GR.2',gr3:'GR.3',gr4:'GR.4',grb:'GR.B',
+  gt500:'GT500',vgt:'VGT',road:'ROAD',race:'RACING',rally:'RALLY'
+};
+
+const CAT_FILTER = {
+  gr1:['gr1'],gr2:['gr2'],gr3:['gr3'],gr4:['gr4'],grb:['grb'],
+  gt500:['gt500'],vgt:['vgt'],road:['road'],rally:['rally','grb'],
+  race:['race','gr1','gr2','gr3','gr4','gt500']
+};
+
+function detectCat(name) {
+  const n = name.toLowerCase();
+  if (/\bgr\.1\b|gr1\b/.test(n)) return 'gr1';
+  if (/\bgr\.2\b|gt500\s/.test(n) || n.includes('gt500')) return 'gt500';
+  if (/\bgr\.3\b/.test(n)) return 'gr3';
+  if (/\bgr\.4\b/.test(n)) return 'gr4';
+  if (/\bgr\.b\b/.test(n)) return 'grb';
+  if (/vgt\b|vision gran turismo/.test(n)) return 'vgt';
+  if (/rally car|gr\.b road|gr\.b rally/.test(n)) return 'rally';
+  if (/touring car|race car|gt3\b|gt1\b|lm\b|prototype/.test(n)) return 'race';
+  return 'road';
+}
+
+function guessDrive(name, makerId) {
+  const n = name.toLowerCase();
+  if (/\bmr\b|miura|countach|hurac|diablo|aventador|650s|mp4|f1 gtr|nsx|dino|cayman/.test(n)) return 'MR';
+  if (/quattro|4wd|4x4|4runner|rav4|impreza|lancer|gt-r|wrx|escudo|pikes peak/.test(n)) return 'AWD';
+  if (/\brr\b|911(?!\s*gt)/.test(n) && makerId === 136) return 'RR';
+  if (/ff\b|front/.test(n)) return 'FF';
+  return 'FR';
+}
+
+function initials(m) {
+  return m.split(/[\s\-]+/).map(w => w[0]).join('').slice(0,3).toUpperCase();
+}
+
+function slugify(name) {
+  return name.toLowerCase()
+    .replace(/['']/g,'')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-|-$/g,'');
+}
+
+function makerColor(maker) {
+  return MAKER_COL[maker] || '#1a1a28';
+}
+
+let ALL_CARS = [];
+let activeCat = '';
+
+function render() {
+  const q   = document.getElementById('q').value.toLowerCase().trim();
+  const srt = document.getElementById('srt').value;
+
+  let list = ALL_CARS.filter(c => {
+    const matchQ = !q || (c.make + ' ' + c.name).toLowerCase().includes(q);
+    const matchC = !activeCat || (CAT_FILTER[activeCat] || [activeCat]).includes(c.cat);
+    return matchQ && matchC;
+  });
+
+  if (srt === 'make') {
+    list.sort((a,b) => (a.make + a.name).localeCompare(b.make + b.name));
+  } else {
+    list.sort((a,b) => a.name.localeCompare(b.name));
+  }
+
+  const cnt = document.getElementById('cnt');
+  cnt.innerHTML = `▣ <span>${list.length.toLocaleString()}</span> CARS FOUND · TAP TO VIEW ON GTDB.IO`;
+
+  const grid = document.getElementById('grid');
+
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="state" style="grid-column:1/-1"><span>NO CARS MATCH — TRY ANOTHER SEARCH</span></div>';
+    return;
+  }
+
+  const BATCH = 60;
+  let rendered = 0;
+
+  function renderBatch() {
+    const frag = document.createDocumentFragment();
+    const end  = Math.min(rendered + BATCH, list.length);
+    for (let i = rendered; i < end; i++) {
+      const c   = list[i];
+      const el  = document.createElement('a');
+      el.className = 'car-card';
+      el.href      = 'https://gtdb.io/gt7/car/' + c.slug + '/';
+      el.target    = '_blank';
+      el.rel       = 'noopener';
+
+      const col      = makerColor(c.make);
+      const catLbl   = CAT_LABEL[c.cat] || 'CAR';
+      const catCls   = 'cat-' + c.cat;
+      const driveCls = 'drive-' + c.drive;
+
+      el.innerHTML = `
+        <span class="card-corner tl"></span>
+        <span class="card-corner tr"></span>
+        <span class="card-corner bl"></span>
+        <span class="card-corner br"></span>
+        <div class="car-banner" style="background:${col}">
+          <span class="banner-initials">${initials(c.make)}</span>
+          <span class="cat-badge ${catCls}">${catLbl}</span>
+        </div>
+        <div class="car-body">
+          <div>
+            <div class="car-name">${c.name}</div>
+            <div class="car-make">${c.make}</div>
+          </div>
+          <div class="car-specs">
+            <div class="spec">
+              <div class="spec-label">DRIVE</div>
+              <div class="spec-val"><span class="drive-badge ${driveCls}">${c.drive}</span></div>
+            </div>
+            <div class="spec">
+              <div class="spec-label">CLASS</div>
+              <div class="spec-val" style="font-size:7px">${catLbl}</div>
+            </div>
+            <div class="spec">
+              <div class="spec-label">GTDB</div>
+              <div class="spec-val" style="color:var(--red);font-size:7px">VIEW ↗</div>
+            </div>
+          </div>
+          <div class="car-footer">
+            <span style="color:var(--text-dim)">GRAN TURISMO 7</span>
+            <span class="gtdb-link">GTDB.IO ↗</span>
+          </div>
+        </div>`;
+      frag.appendChild(el);
+    }
+    if (rendered === 0) grid.innerHTML = '';
+    grid.appendChild(frag);
+    rendered = end;
+    if (rendered < list.length) requestAnimationFrame(renderBatch);
+  }
+
+  grid.innerHTML = '';
+  rendered = 0;
+  renderBatch();
+}
+
+async function loadCars() {
+  try {
+    const res  = await fetch('https://ddm999.github.io/gt7info/data/db/cars.csv');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text  = await res.text();
+    const lines = text.trim().split('\n').slice(1);
+    ALL_CARS = lines.map(line => {
+      const parts = line.split(',');
+      const name  = parts[1]?.trim() || '';
+      const makId = parseInt(parts[2]) || 0;
+      const make  = MAKERS[makId] || 'Unknown';
+      const cat   = detectCat(name);
+      const drive = guessDrive(name, makId);
+      const slug  = slugify(name);
+      return { name, make, makId, cat, drive, slug };
+    }).filter(c => c.name);
+
+    document.getElementById('ver').textContent = ALL_CARS.length + ' CARS';
+    render();
+  } catch(err) {
+    document.getElementById('grid').innerHTML = `
+      <div class="state" style="grid-column:1/-1">
+        <span>⚠ FAILED TO LOAD CAR DATA</span>
+        <span style="font-size:7px;letter-spacing:1px">${err.message}</span>
+      </div>`;
+    document.getElementById('ver').textContent = 'OFFLINE';
+  }
+}
+
+document.getElementById('q').addEventListener('input', render);
+document.getElementById('srt').addEventListener('change', render);
+
+document.getElementById('cats').addEventListener('click', e => {
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  document.querySelectorAll('.chip').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  activeCat = btn.dataset.cat;
+  render();
+});
+
+loadCars();
+</script>
+
+</body>
+</html>
