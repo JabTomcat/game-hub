@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAGE TITLE — Game Hub</title>
+  <!--
+    ============================================================
+    PATH TO style.css:
+      Root page (e.g. index.html):          href="style.css"
+      Game index (e.g. diablo2r/index.html): href="../style.css"
+      Class page (e.g. diablo2r/sorc.html):  href="../style.css"
+    ============================================================
+  -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+
+  <header class="site-header">
+    <div class="header-eyebrow">★ GAME HUB ★</div>
+    <h1 class="site-title">PAGE TITLE</h1>
+    <p class="site-subtitle">SUBTITLE OR TAGLINE HERE</p>
+    <div class="hp-bar-wrap">
+      <span>HP</span>
+      <div class="hp-bar"><div class="hp-fill"></div></div>
+      <span>KNOWLEDGE: MAX</span>
+    </div>
+  </header>
+
+  <!-- ── BREADCRUMB ── -->
+
+  <!--
+    Update these links to reflect where this page lives.
+    Examples:
+      Root:       (remove breadcrumb entirely)
+      Game index: Hub <sep> Game Name
+      Class page: Hub <sep> Game Name <sep> Class Name
+  -->
+
+  <nav class="breadcrumb">
+    <a href="../index.html">HUB</a>
+    <span class="sep">▶</span>
+    <a href="index.html">GAME NAME</a>
+    <span class="sep">▶</span>
+    <span class="current">PAGE NAME</span>
+  </nav>
+
+  <div class="divider">SECTION TITLE</div>
+
+  <main class="container">
+
+```
+<!-- ── STATS BAR (optional — update or remove) ── -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-label">STAT 1</span><span class="stat-val">VALUE</span></div>
+  <div class="stat"><span class="stat-label">STAT 2</span><span class="stat-val">VALUE</span></div>
+  <div class="stat"><span class="stat-label">STAT 3</span><span class="stat-val">VALUE</span></div>
+</div>
+
+<!-- ── SECTION LABEL ── -->
+<div class="section-label">▍ SECTION NAME</div>
+
+<!-- ────────────────────────────────────────────
+     CONTENT AREA — choose one or more patterns:
+     ──────────────────────────────────────────── -->
+
+<!-- PATTERN A: Content Cards Grid (links to sub-pages) -->
+<div class="content-grid">
+
+  <a class="content-card" href="page-name.html">
+    <div class="content-card-title">CARD TITLE</div>
+    <div class="content-card-body">Short description of what this page covers.</div>
+  </a>
+
+  <a class="content-card" href="page-name-2.html">
+    <div class="content-card-title">CARD TITLE 2</div>
+    <div class="content-card-body">Short description of what this page covers.</div>
+  </a>
+
+</div>
+
+<!-- PATTERN B: Reference Table -->
+<!--
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>COLUMN 1</th>
+      <th>COLUMN 2</th>
+      <th>COLUMN 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Row data</td>
+      <td>Row data</td>
+      <td>Row data</td>
+    </tr>
+  </tbody>
+</table>
+-->
+
+<!-- PATTERN C: Plain text / guide content -->
+<!--
+<div class="section-label">▍ OVERVIEW</div>
+<p style="font-size:20px; line-height:1.6; color:var(--text); margin-bottom:1.5rem;">
+  Your guide text goes here. Use VT323 font (default body) for paragraphs.
+  It reads cleanly at 20px and feels appropriately retro.
+</p>
+-->
+```
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+
+  <footer class="site-footer">
+    <span>█</span> GAME HUB &nbsp;·&nbsp; GITHUB PAGES <span>█</span>
+  </footer>
+
+</body>
+</html>
