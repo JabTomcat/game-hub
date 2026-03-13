@@ -137,7 +137,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 7px 10px;
+      padding: 10px 10px;
+      min-height: 38px;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
       gap: 8px;
@@ -245,6 +246,20 @@
     .drive-AWD { background: rgba(100,30,120,.2); color: #c080e0; border: 1px solid rgba(100,30,120,.4); }
     .drive-RR  { background: rgba(180,60,20,.2);  color: #f4845f; border: 1px solid rgba(180,60,20,.4); }
     .drive-4WD { background: rgba(100,30,120,.2); color: #c080e0; border: 1px solid rgba(100,30,120,.4); }
+
+    .car-card-footer {
+      padding: 8px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .gt7-link {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      color: var(--red);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .gt7-link:hover { color: var(--gold); }
 
     @media (max-width: 500px) { .car-grid { grid-template-columns: 1fr; } }
   </style>
@@ -414,13 +429,19 @@
 
         const imgHTML = hasPic
           ? `<div class="car-img-wrap" data-color="${col}" data-initials="${inits}">
-               <img src="${c.Picture}" alt="${c.Make} ${c.Model}" loading="lazy" onerror="imgFallback(this)" />
+               <img src="${c.Picture}" alt="${c.Make} ${c.Model}" loading="lazy"
+                 crossorigin="anonymous" referrerpolicy="no-referrer"
+                 onerror="imgFallback(this)" />
              </div>`
           : `<div class="car-img-wrap">
                <div class="car-img-fallback" style="background:${col}">
                  <span class="fallback-initials">${inits}</span>
                </div>
              </div>`;
+
+        const gtLink = c.CarID
+          ? `https://www.gran-turismo.com/us/gt7/carlist/id/${c.CarID}/`
+          : null;
 
         el.innerHTML = `
           <span class="card-corner tl"></span>
@@ -445,7 +466,11 @@
             <div class="spec"><div class="spec-label">DRIVE</div><div class="spec-val"><span class="drive-badge ${driveCls}">${c.Drivetrain || '—'}</span></div></div>
             <div class="spec"><div class="spec-label">CLASS</div><div class="spec-val" style="font-size:7px">${catLabel}</div></div>
             <div class="spec"><div class="spec-label">PP</div><div class="spec-val" style="color:var(--gold)">${c.PP || '—'}</div></div>
-          </div>`;
+          </div>
+          ${gtLink ? `
+          <div class="car-card-footer">
+            <a href="${gtLink}" target="_blank" rel="noopener" class="gt7-link" onclick="event.stopPropagation()">VIEW ON GT7 ↗</a>
+          </div>` : ''}`;
 
         frag.appendChild(el);
       }
