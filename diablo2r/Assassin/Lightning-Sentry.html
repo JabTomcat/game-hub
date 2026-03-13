@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lightning Sentry Guide — D2R — Game Hub</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+```
+.gear-slot {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  padding: 10px 12px;
+}
+
+.gear-slot-name {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.gear-item {
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+
+.gear-item.bis { color: #40c8f0; }
+.gear-item.alt { color: var(--green); }
+
+.gear-note {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+.gear-tag {
+  display: inline-block;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  padding: 2px 5px;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.tag-bis { background: rgba(0,140,180,.3); color: #40c8f0; border: 1px solid rgba(0,140,180,.5); }
+.tag-alt { background: rgba(20,160,80,.3);  color: #60d090; border: 1px solid rgba(20,160,80,.5); }
+.tag-rw  { background: rgba(200,160,0,.3);  color: #e0b840; border: 1px solid rgba(200,160,0,.5); }
+
+.tip-box {
+  border: 2px solid var(--blue);
+  background: rgba(64,128,224,0.07);
+  padding: 12px 16px;
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.tip-box .tip-label {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--blue);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.tip-box.warn {
+  border-color: var(--gold);
+  background: rgba(240,192,64,0.06);
+}
+
+.tip-box.warn .tip-label { color: var(--gold); }
+
+.data-table td.highlight { color: var(--gold); }
+.data-table td.stat-str  { color: #f4845f; }
+.data-table td.stat-dex  { color: #70b0ff; }
+.data-table td.stat-vit  { color: #7ec87e; }
+.data-table td.stat-en   { color: var(--text-dim); }
+.data-table td.note      { color: var(--text-dim); font-size: 16px; }
+.data-table td.maxed     { color: var(--green); }
+```
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-eyebrow">★ DIABLO II RESURRECTED ★</div>
+    <h1 class="site-title">⚡ LIGHTNING SENTRY<br>ASSASSIN</h1>
+    <p class="site-subtitle">ENDGAME BUILD GUIDE</p>
+    <div class="hp-bar-wrap">
+      <span>HP</span>
+      <div class="hp-bar"><div class="hp-fill"></div></div>
+      <span>TRAPS: ACTIVE</span>
+    </div>
+  </header>
+
+  <nav class="breadcrumb">
+    <a href="../../index.html">HUB</a>
+    <span class="sep">▶</span>
+    <a href="../index.html">DIABLO II RESURRECTED</a>
+    <span class="sep">▶</span>
+    <a href="index.html">ASSASSIN</a>
+    <span class="sep">▶</span>
+    <span class="current">LIGHTNING SENTRY</span>
+  </nav>
+
+  <div class="divider">ENDGAME BUILD</div>
+
+  <main class="container">
+
+```
+<div class="stats-bar">
+  <div class="stat"><span class="stat-label">BUILD</span><span class="stat-val">TRAPSIN</span></div>
+  <div class="stat"><span class="stat-label">MAIN SKILL</span><span class="stat-val">LGT SENTRY</span></div>
+  <div class="stat"><span class="stat-label">ELEMENT</span><span class="stat-val">LIGHTNING</span></div>
+  <div class="stat"><span class="stat-label">DIFFICULTY</span><span class="stat-val">HELL</span></div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">▍ BUILD OVERVIEW</div>
+  The Lightning Sentry Trapsin is one of the strongest and most beginner-friendly endgame builds in D2R. You lay traps, they do the work. Lightning Sentry chains lightning between enemies while Death Sentry cleans up with corpse explosion. Strong in almost every area of the game including Uber content with the right gear.
+</div>
+
+<!-- ── SKILLS ── -->
+<div class="section-label">▍ FINAL SKILL ALLOCATION</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>SKILL</th>
+      <th>POINTS</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="highlight">Lightning Sentry</td><td class="maxed">20</td><td class="note">Core skill — max first</td></tr>
+    <tr><td class="highlight">Death Sentry</td><td class="maxed">20</td><td class="note">Corpse explosion — max second</td></tr>
+    <tr><td class="highlight">Fire Blast</td><td class="maxed">20</td><td class="note">Synergy to Lightning Sentry</td></tr>
+    <tr><td class="highlight">Charged Bolt Sentry</td><td class="maxed">20</td><td class="note">Synergy to Lightning Sentry</td></tr>
+    <tr><td>Shock Web</td><td>1</td><td class="note">Prereq only</td></tr>
+    <tr><td>Blade Sentinel</td><td>1</td><td class="note">Prereq only</td></tr>
+    <tr><td>Burst of Speed</td><td>1</td><td class="note">Quality of life — movement speed</td></tr>
+    <tr><td>Fade</td><td>1</td><td class="note">Huge resistances + curse reduction</td></tr>
+    <tr><td>Shadow Master</td><td>1</td><td class="note">Useful companion in tough areas</td></tr>
+    <tr><td>Cloak of Shadows</td><td>1</td><td class="note">Optional — blinds enemies in a pinch</td></tr>
+  </tbody>
+</table>
+
+<!-- ── STATS ── -->
+<div class="section-label">▍ FINAL STAT TARGETS</div>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>STAT</th>
+      <th>TARGET</th>
+      <th>NOTES</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="stat-str">Strength</td><td>Enough for gear</td><td class="note">~100–156 depending on armor choice. Check your gear requirements.</td></tr>
+    <tr><td class="stat-dex">Dexterity</td><td>Base (75)</td><td class="note">Assassins rarely need extra dex. Only add if gear demands it.</td></tr>
+    <tr><td class="stat-vit">Vitality</td><td>All remaining points</td><td class="note">Target 1200+ life fully geared. More is always better.</td></tr>
+    <tr><td class="stat-en">Energy</td><td>Base (25)</td><td class="note">Never invest. Mana comes from gear.</td></tr>
+  </tbody>
+</table>
+
+<div class="tip-box warn">
+  <div class="tip-label">▍ FCR BREAKPOINTS</div>
+  Faster Cast Rate affects how quickly you lay traps. The key breakpoints for Assassin are <strong style="color:var(--gold)">102% FCR</strong> (recommended) and <strong style="color:var(--gold)">65% FCR</strong> (minimum target). Build your gear around hitting 102% FCR for the best trap-laying speed.
+</div>
+
+<!-- ── GEAR ── -->
+<div class="section-label">▍ BEST IN SLOT GEAR</div>
+
+<div class="gear-grid">
+  <div class="gear-slot">
+    <div class="gear-slot-name">WEAPON (MAIN)</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">+3 Traps / +3 LS Claw</div>
+    <div class="gear-note">Magic or rare claw with +3 Traps and +3 Lightning Sentry. Enormous skill level boost.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">WEAPON (OFF)</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">+3 Traps / +3 LS Claw</div>
+    <div class="gear-note">Dual claw setup maximizes trap skill levels. Alternatively use Spirit for FCR.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">HELM</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">Harlequin Crest (Shako)</div>
+    <div class="gear-note">+2 all skills, life, mana, damage reduction. Socket with Um rune for resists.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">ARMOR</div>
+    <div class="gear-tag tag-rw">RUNEWORD</div>
+    <div class="gear-item bis">Enigma</div>
+    <div class="gear-note">Jah+Ith+Ber. +2 skills, Teleport, +STR, MF. The single best armor in the game.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BOOTS</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">Sandstorm Trek</div>
+    <div class="gear-note">Strength, vitality, FRW, poison resist. Or rare boots with tri-resist + FRW.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">BELT</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">Arachnid Mesh</div>
+    <div class="gear-note">+1 skills, 20% FCR, slows enemies. Critical for hitting FCR breakpoints.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">GLOVES</div>
+    <div class="gear-tag tag-alt">ALT</div>
+    <div class="gear-item alt">Magefist or Rare +2 Traps</div>
+    <div class="gear-note">Magefist for FCR. Rare gloves with +2 Traps and IAS are BiS if you find them.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">AMULET</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">+2 Assassin Skills Rare</div>
+    <div class="gear-note">Rare or crafted amulet. +2 Assassin skills with FCR and resistances. Hard to find but worth it.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">RING 1</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">Stone of Jordan</div>
+    <div class="gear-note">+1 all skills, max mana. Stacks well with second SoJ.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">RING 2</div>
+    <div class="gear-tag tag-bis">BIS</div>
+    <div class="gear-item bis">Raven Frost</div>
+    <div class="gear-note">Cannot Be Frozen is essential in Hell. Also +dex and cold absorb.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">CHARMS</div>
+    <div class="gear-tag tag-alt">ALT</div>
+    <div class="gear-item alt">Trap Skills GC + Life SCs</div>
+    <div class="gear-note">Grand Charms with +1 Trap Skills and life. Fill remaining space with life/resist small charms.</div>
+  </div>
+  <div class="gear-slot">
+    <div class="gear-slot-name">MERC WEAPON</div>
+    <div class="gear-tag tag-rw">RUNEWORD</div>
+    <div class="gear-item bis">Infinity (Eth Colossus Voulge)</div>
+    <div class="gear-note">Conviction aura breaks lightning immunity. The most important item for the build's effectiveness.</div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">▍ MERCENARY</div>
+  Use an Act 2 Nightmare Offensive mercenary (Blessed Aim aura). Equip him with Infinity for Conviction aura to break lightning immunities, Fortitude armor for damage and resists, and Andariel's Visage or Guillaume's Face helm. Your Merc's Conviction aura is what makes this build work in Hell — without it, many enemies are immune to your lightning damage.
+</div>
+
+<div class="tip-box warn">
+  <div class="tip-label">▍ BUDGET ALTERNATIVES</div>
+  Can't afford BiS gear yet? These are solid alternatives while you farm: <strong style="color:var(--gold)">Smoke</strong> runeword armor (75% all resists), <strong style="color:var(--gold)">Rhyme</strong> shield (+25% all resists, CBF), <strong style="color:var(--gold)">Tal Rasha's belt</strong> for lightning resist, and a <strong style="color:var(--gold)">Crescent Moon</strong> weapon on your merc if you can't afford Infinity yet.
+</div>
+```
+
+  </main>
+
+  <footer class="site-footer">
+    <span>█</span> GAME HUB &nbsp;·&nbsp; GITHUB PAGES <span>█</span>
+  </footer>
+
+</body>
+</html>
