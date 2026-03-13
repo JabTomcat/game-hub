@@ -272,6 +272,82 @@
     .gt7-link { font-family: var(--font-pixel); font-size: 7px; color: var(--red); letter-spacing: 1px; text-decoration: none; }
     .gt7-link:hover { color: var(--gold); }
 
+    /* ── Settings panel ── */
+    .settings-toggle {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      padding: 0 12px;
+      height: 32px;
+      border: 2px solid var(--border);
+      background: var(--panel);
+      color: var(--text-dim);
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: border-color 0.1s, color 0.1s;
+      white-space: nowrap;
+    }
+    .settings-toggle:hover { border-color: var(--gold); color: var(--gold); }
+
+    .settings-panel {
+      display: none;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      margin: 0 1.5rem 1rem;
+      padding: 1rem 1.2rem;
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      gap: 12px;
+      flex-direction: column;
+    }
+    .settings-panel.open { display: flex; }
+
+    .settings-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .settings-label { color: var(--text-dim); letter-spacing: 1px; white-space: nowrap; }
+
+    .settings-input {
+      flex: 1;
+      min-width: 200px;
+      height: 30px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-retro);
+      font-size: 16px;
+      padding: 0 8px;
+      outline: none;
+    }
+    .settings-input:focus { border-color: var(--gold); }
+
+    .settings-btn {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      height: 30px;
+      padding: 0 10px;
+      border: 2px solid var(--border);
+      background: var(--panel);
+      color: var(--text-dim);
+      cursor: pointer;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      transition: all 0.1s;
+    }
+    .settings-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .settings-btn.primary { border-color: var(--blue); color: var(--blue); }
+    .settings-btn.primary:hover { background: rgba(64,128,224,0.15); }
+
+    .settings-status {
+      color: var(--green);
+      font-size: 7px;
+      letter-spacing: 1px;
+      min-height: 14px;
+    }
+    .settings-status.err { color: var(--red); }
+
     @media (max-width: 500px) { .car-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -310,6 +386,28 @@
       <option value="pp-asc">PP LOW → HIGH</option>
       <option value="pp-desc">PP HIGH → LOW</option>
     </select>
+    <button class="settings-toggle" onclick="toggleSettings()">⚙ SYNC</button>
+  </div>
+
+  <!-- ── Settings / Sync Panel ── -->
+  <div class="settings-panel" id="settingsPanel">
+    <div style="color:var(--gold);letter-spacing:2px;margin-bottom:4px;">▍ DEVICE SYNC</div>
+
+    <div class="settings-row">
+      <span class="settings-label">BIN ID:</span>
+      <input class="settings-input" id="binIdInput" placeholder="Paste bin ID from another device..." />
+      <button class="settings-btn primary" onclick="applyBinId()">APPLY</button>
+      <button class="settings-btn" onclick="copyBinId()">COPY MINE</button>
+    </div>
+
+    <div class="settings-row">
+      <span class="settings-label">SYNC STATUS:</span>
+      <span class="settings-status" id="syncStatus">—</span>
+    </div>
+
+    <div style="color:var(--text-dim);font-size:6px;letter-spacing:1px;line-height:1.8;">
+      TO SYNC TO A NEW DEVICE: Click COPY MINE on this device, then paste it into the BIN ID field on the new device and click APPLY.
+    </div>
   </div>
 
   <div class="chips-wrap">
@@ -363,10 +461,11 @@
   async function loadOwned() {
     try {
       if (!BIN_ID) return; // No bin yet — nothing to load
+      setSyncStatus('SYNCING...');
       const res = await fetch(`${JSONBIN_API}/b/${BIN_ID}/latest`, {
-        headers: { 'X-Master-Key': JSONBIN_KEY }
+        headers: { 'X-Access-Key': JSONBIN_KEY }
       });
-      if (!res.ok) throw new Error('Load failed');
+      if (!res.ok) throw new Error('Load failed: ' + res.status);
       const data = await res.json();
       OWNED = new Set(data.record.owned || []);
       // Refresh any already-rendered buttons
@@ -375,8 +474,10 @@
         btn.classList.toggle('is-owned', isOwned);
         btn.textContent = isOwned ? '✓ OWNED' : 'NOT OWNED';
       });
+      setSyncStatus('SYNCED ✓ — ' + OWNED.size + ' CARS OWNED');
     } catch(e) {
       console.warn('Could not load owned list:', e);
+      setSyncStatus('SYNC ERROR: ' + e.message, true);
     }
   }
 
@@ -395,7 +496,7 @@
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-Master-Key': JSONBIN_KEY,
+            'X-Access-Key': JSONBIN_KEY,
             'X-Bin-Name': 'gt7-owned',
             'X-Bin-Private': 'false'
           },
@@ -411,7 +512,7 @@
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            'X-Master-Key': JSONBIN_KEY
+            'X-Access-Key': JSONBIN_KEY
           },
           body
         });
@@ -419,6 +520,7 @@
       }
     } catch(e) {
       console.warn('Could not save owned list:', e);
+      setSyncStatus('SAVE ERROR: ' + e.message, true);
     }
   }
 
@@ -592,6 +694,40 @@
     grid.innerHTML = '';
     rendered = 0;
     renderBatch();
+  }
+
+  function toggleSettings() {
+    document.getElementById('settingsPanel').classList.toggle('open');
+  }
+
+  function copyBinId() {
+    const id = localStorage.getItem(LS_BIN_ID);
+    if (!id) {
+      setSyncStatus('NO BIN YET — TOGGLE A CAR FIRST', true);
+      return;
+    }
+    navigator.clipboard.writeText(id).then(() => {
+      setSyncStatus('BIN ID COPIED TO CLIPBOARD ✓');
+    }).catch(() => {
+      document.getElementById('binIdInput').value = id;
+      setSyncStatus('COPIED TO FIELD — SELECT AND COPY MANUALLY');
+    });
+  }
+
+  function applyBinId() {
+    const val = document.getElementById('binIdInput').value.trim();
+    if (!val) { setSyncStatus('PLEASE PASTE A BIN ID FIRST', true); return; }
+    BIN_ID = val;
+    localStorage.setItem(LS_BIN_ID, BIN_ID);
+    setSyncStatus('LOADING OWNED LIST...');
+    loadOwned().then(() => setSyncStatus('SYNC COMPLETE ✓'));
+  }
+
+  function setSyncStatus(msg, isErr = false) {
+    const el = document.getElementById('syncStatus');
+    if (!el) return;
+    el.textContent = msg;
+    el.className = 'settings-status' + (isErr ? ' err' : '');
   }
 
   async function loadCars() {
