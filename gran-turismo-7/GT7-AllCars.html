@@ -272,6 +272,30 @@
     .gt7-link { font-family: var(--font-pixel); font-size: 7px; color: var(--red); letter-spacing: 1px; text-decoration: none; }
     .gt7-link:hover { color: var(--gold); }
 
+    .source-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 6px 12px 8px;
+    }
+    .source-tag {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      padding: 3px 6px;
+      letter-spacing: 1px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      background: var(--bg);
+      white-space: nowrap;
+    }
+    .source-brand-central { border-color: #4080e0; color: #4080e0; }
+    .source-used-cars     { border-color: #40c060; color: #40c060; }
+    .source-legend        { border-color: #f0c040; color: #f0c040; }
+    .source-invite        { border-color: #c080e0; color: #c080e0; }
+    .source-gift          { border-color: #e04040; color: #e04040; }
+    .source-cafe          { border-color: #c8a060; color: #c8a060; }
+    .source-online        { border-color: #40c8f0; color: #40c8f0; }
+
     /* ── Settings panel ── */
     .settings-toggle {
       font-family: var(--font-pixel);
@@ -347,6 +371,50 @@
       min-height: 14px;
     }
     .settings-status.err { color: var(--red); }
+
+    /* ── Source tags ── */
+    .source-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 0 12px 10px;
+    }
+    .source-tag {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      padding: 3px 6px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .source-brand-central  { background: rgba(64,128,224,0.2);  color: #70b0ff; border: 1px solid rgba(64,128,224,0.4); }
+    .source-used-cars      { background: rgba(40,120,40,0.2);   color: #7ec87e; border: 1px solid rgba(40,120,40,0.4); }
+    .source-legend-cars    { background: rgba(200,160,0,0.2);   color: #e0b840; border: 1px solid rgba(200,160,0,0.4); }
+    .source-roulette       { background: rgba(160,80,200,0.2);  color: #c07ef0; border: 1px solid rgba(160,80,200,0.4); }
+    .source-invitation     { background: rgba(220,0,40,0.2);    color: #ff6080; border: 1px solid rgba(220,0,40,0.4); }
+    .source-reward         { background: rgba(180,60,20,0.2);   color: #f4845f; border: 1px solid rgba(180,60,20,0.4); }
+    .source-other          { background: rgba(80,80,90,0.2);    color: #aaa;    border: 1px solid rgba(80,80,90,0.4); }
+
+    /* ── Price bar ── */
+    .price-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .price-label {
+      font-family: var(--font-pixel);
+      font-size: 6px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+    .price-val {
+      font-family: var(--font-pixel);
+      font-size: 8px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
 
     @media (max-width: 500px) { .car-grid { grid-template-columns: 1fr; } }
   </style>
@@ -559,6 +627,14 @@
   function makerColor(make) { return MAKER_COL[make] || '#1a1a28'; }
   function initials(make) { return make.split(/[\s\-]+/).map(w => w[0]).join('').slice(0,3).toUpperCase(); }
 
+  function fmtPrice(p) {
+    if (!p || p === '' || isNaN(p)) return '—';
+    const n = parseInt(p);
+    if (n >= 1000000) return (n / 1000000).toFixed(2).replace(/\.?0+$/, '') + 'M Cr.';
+    if (n >= 1000)    return (n / 1000).toFixed(0) + 'K Cr.';
+    return n + ' Cr.';
+  }
+
   function catClass(cat) {
     const map = {
       'Gr.1':'gr1','Gr.2':'gr2','Gr.3':'gr3','Gr.4':'gr4',
@@ -668,6 +744,13 @@
           <div class="car-name-block">
             <div class="car-name">${c.Model}</div>
           </div>
+          ${c.Source && c.Source.trim() ? `
+          <div class="source-tags">
+            ${c.Source.split('|').map(s => {
+              const key = s.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z\-]/g, '');
+              return '<span class="source-tag source-' + key + '">' + s.trim() + '</span>';
+            }).join('')}
+          </div>` : ''}
           <div class="car-specs">
             <div class="spec"><div class="spec-label">POWER</div><div class="spec-val">${c.Power ? c.Power+' HP' : '—'}</div></div>
             <div class="spec"><div class="spec-label">TORQUE</div><div class="spec-val">${c.Torque ? c.Torque+' LB-FT' : '—'}</div></div>
@@ -676,6 +759,11 @@
             <div class="spec"><div class="spec-label">CLASS</div><div class="spec-val" style="font-size:7px">${catLabel}</div></div>
             <div class="spec"><div class="spec-label">PP</div><div class="spec-val" style="color:var(--gold)">${c.PP || '—'}</div></div>
           </div>
+          ${c.Price && c.Price.trim() ? `
+          <div class="price-bar">
+            <span class="price-label">PRICE</span>
+            <span class="price-val">${fmtPrice(c.Price)}</span>
+          </div>` : ''}
           <div class="car-card-footer">
             <span>${gtLink ? `<a href="${gtLink}" target="_blank" rel="noopener" class="gt7-link" onclick="event.stopPropagation()">VIEW ON GT7 ↗</a>` : ''}</span>
             <button class="owned-btn ${owned ? 'is-owned' : ''}" data-key="${c.Make}|${c.Model}" onclick="toggleOwned(this, event)">
