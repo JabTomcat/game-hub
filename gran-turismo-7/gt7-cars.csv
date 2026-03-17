@@ -1,41 +1,41 @@
 Make,Model,Power,Torque,Weight,Drivetrain,Category,PP,Source,Price,CarID,Picture
 Abarth,1500 Biposto Bertone B.A.T 1 '52,73,73,1918,FR,Road,262,Legend Cars,1000000,car1932,img/car1932.jpg
 Abarth,Abarth 500 '09,133,133,2282,FF,Road,415,Brand Central|Used Cars|Reward,29500,car1973,img/car1973.jpg
-Abarth,Abarth 595 SS '70,30,32,1036,RR,Road,175,Used Cars,48900,car3438,img/car1973.jpg
-AFEELA,AFEELA 1 '26,,,,4WD,Gr.X,530,Brand Central,,car3579,img/car1973.jpg
-AFEELA,AFEELA Prototype 2024,,,,4WD,Gr.X,536,Brand Central,,car3546,img/car1973.jpg
-Alfa Romeo,155 2.5 V6 TI '93,413,217,2227,4WD,Gr.4,662,Legend Cars,650000,car365,img/car1973.jpg
-Alfa Romeo,4C '14,235,258,2094,MR,Road,534,Brand Central|Reward,8100,car2136,img/car1973.jpg
-Alfa Romeo,4C Gr.3,528,390,2690,MR,Gr.3,713,Brand Central,450000,car3185,img/car1973.jpg
-Alfa Romeo,4C Gr.3 Road Car,443,330,2910,MR,Road,573,Brand Central,300000,car3299,img/car1973.jpg
-Alfa Romeo,4C Gr.4,295,262,2249,MR,Gr.4,628,Brand Central,350000,car2166,img/car1973.jpg
-Alfa Romeo,8C 2900B Touring Berlinetta '38,179,193,2888,FR,Road,394,Legend Cars,20000000,car3415,img/car1973.jpg
-Alfa Romeo,8C Competizione '08,442,354,3494,FR,Road,561,Brand Central|Used Cars|Reward,350000,car1578,img/car1973.jpg
-Alfa Romeo,GIULIA TZ2 carrozzata da ZAGATO '65,168,127,1367,FR,Gr.X,489,Legend Cars,3800000,car1645,img/car1973.jpg
-Alfa Romeo,Giulia GTAm '20,532,442,3483,FR,Road,600,Brand Central,220000,car3411,img/car1973.jpg
-Alfa Romeo,Giulia Sprint GT Veloce '67,104,102,2293,FR,Road,344,Used Cars,180000,car3530,img/car1973.jpg
-Alfa Romeo,MiTo '09,152,148,2524,FF,Road,426,Brand Central|Used Cars|Reward,28500,car1933,img/car1973.jpg
-Alpine,A110 '17,248,236,2432,MR,Road,532,Brand Central|Reward,80000,car3337,img/car1973.jpg
-Alpine,A110 '72,138,114,1576,RR,Road,420,Used Cars,133800,car1796,img/car1973.jpg
-Alpine,A220 Race Car '68,319,253,1521,MR,Gr.X,585,Legend Cars,330000,car3457,img/car1973.jpg
-Alpine,Alpine VGT,443,426,1984,MR,VGT,688,Brand Central|Roulette,1000000,car2112,img/car1973.jpg
-Alpine,Alpine VGT '17,594,409,2050,RR,VGT,860,Brand Central|Roulette,1000000,car3187,img/car1973.jpg
-Alpine,Alpine VGT Race,443,426,1984,MR,VGT,738,Brand Central,1000000,car2116,img/car1973.jpg
-AMG,300 SEL 6.8 AMG '71,422,443,3605,FR,Gr.X,517,Legend Cars,700000,car3388,img/car1973.jpg
-AMG,A 45 AMG '13,355,331,3428,4WD,Road,522,Brand Central|Roulette,64000,car2170,img/car1973.jpg
-AMG,Mercedes-AMG C 63 S '15,503,516,3803,FR,Road,576,Brand Central|Reward,135800,car3458,img/car1973.jpg
-AMG,Mercedes-AMG GT Black Series '20,719,590,3395,FR,Road,667,Brand Central|Roulette|Reward,420000,car3485,img/car1973.jpg
-AMG,Mercedes-AMG GT R '17,576,516,3660,FR,Road,611,Brand Central,184000,car3416,img/car1973.jpg
-AMG,Mercedes-AMG GT S '15,502,478,3461,FR,Road,586,Brand Central|Reward,120000,car2149,img/car1973.jpg
-AMG,Mercedes-AMG GT Safety Car,502,478,3461,FR,Gr.X,594,Brand Central,200000,car3210,img/car1973.jpg
-AMG,Mercedes-AMG GT3 '16,614,531,2921,FR,Gr.3,739,Brand Central,450000,car3224,img/car1973.jpg
-AMG,Mercedes-AMG GT3 '20,614,531,2833,FR,Gr.3,745,Brand Central,480000,car3531,img/car1973.jpg
-AMG,Mercedes-Benz AMG VGT,576,590,3053,FR,VGT,663,Brand Central,1000000,car2055,img/car1973.jpg
-AMG,Mercedes-Benz AMG VGT Racing Series,590,604,2866,FR,VGT,732,Brand Central,1000000,car2076,img/car1973.jpg
-AMG,SLS AMG '10,570,479,3571,FR,Road,588,Brand Central|Used Cars|Reward,360000,car1507,img/car1973.jpg
-AMG,SLS AMG GT3 '11,614,531,2976,FR,Gr.3,721,Brand Central,450000,car1797,img/car1973.jpg
-AMG,SLS AMG Gr.4,419,352,3120,FR,Gr.4,639,Brand Central,350000,car3192,img/car1973.jpg
-Amuse,Amuse Nismo 380RS Super Leggars,380,302,3020,FR,Road,572,Brand Central|Roulette,100000,car1549,
+Abarth,Abarth 595 SS '70,30,32,1036,RR,Road,175,Used Cars,48900,car3438,img/car3438.jpg
+AFEELA,AFEELA 1 '26,,,,4WD,Gr.X,530,Brand Central,,car3579,img/car3579.jpg
+AFEELA,AFEELA Prototype 2024,,,,4WD,Gr.X,536,Brand Central,,car3546,img/car3546.jpg
+Alfa Romeo,155 2.5 V6 TI '93,413,217,2227,4WD,Gr.4,662,Legend Cars,650000,car365,img/car365.jpg
+Alfa Romeo,4C '14,235,258,2094,MR,Road,534,Brand Central|Reward,8100,car2136,img/car2136.jpg
+Alfa Romeo,4C Gr.3,528,390,2690,MR,Gr.3,713,Brand Central,450000,car3185,img/car3185.jpg
+Alfa Romeo,4C Gr.3 Road Car,443,330,2910,MR,Road,573,Brand Central,300000,car3299,img/car3299.jpg
+Alfa Romeo,4C Gr.4,295,262,2249,MR,Gr.4,628,Brand Central,350000,car2166,img/car2166.jpg
+Alfa Romeo,8C 2900B Touring Berlinetta '38,179,193,2888,FR,Road,394,Legend Cars,20000000,car3415,img/car3415.jpg
+Alfa Romeo,8C Competizione '08,442,354,3494,FR,Road,561,Brand Central|Used Cars|Reward,350000,car1578,img/car1578.jpg
+Alfa Romeo,GIULIA TZ2 carrozzata da ZAGATO '65,168,127,1367,FR,Gr.X,489,Legend Cars,3800000,car1645,img/car1645.jpg
+Alfa Romeo,Giulia GTAm '20,532,442,3483,FR,Road,600,Brand Central,220000,car3411,img/car3411.jpg
+Alfa Romeo,Giulia Sprint GT Veloce '67,104,102,2293,FR,Road,344,Used Cars,180000,car3530,img/car3530.jpg
+Alfa Romeo,MiTo '09,152,148,2524,FF,Road,426,Brand Central|Used Cars|Reward,28500,car1933,img/car1933.jpg
+Alpine,A110 '17,248,236,2432,MR,Road,532,Brand Central|Reward,80000,car3337,img/car3337.jpg
+Alpine,A110 '72,138,114,1576,RR,Road,420,Used Cars,133800,car1796,img/car1796.jpg
+Alpine,A220 Race Car '68,319,253,1521,MR,Gr.X,585,Legend Cars,330000,car3457,img/car3457.jpg
+Alpine,Alpine VGT,443,426,1984,MR,VGT,688,Brand Central|Roulette,1000000,car2112,img/car2112.jpg
+Alpine,Alpine VGT '17,594,409,2050,RR,VGT,860,Brand Central|Roulette,1000000,car3187,img/car3187.jpg
+Alpine,Alpine VGT Race,443,426,1984,MR,VGT,738,Brand Central,1000000,car2116,img/car2116.jpg
+AMG,300 SEL 6.8 AMG '71,422,443,3605,FR,Gr.X,517,Legend Cars,700000,car3388,img/car3388.jpg
+AMG,A 45 AMG '13,355,331,3428,4WD,Road,522,Brand Central|Roulette,64000,car2170,img/car2170.jpg
+AMG,Mercedes-AMG C 63 S '15,503,516,3803,FR,Road,576,Brand Central|Reward,135800,car3458,img/car3458.jpg
+AMG,Mercedes-AMG GT Black Series '20,719,590,3395,FR,Road,667,Brand Central|Roulette|Reward,420000,car3485,img/car3485.jpg
+AMG,Mercedes-AMG GT R '17,576,516,3660,FR,Road,611,Brand Central,184000,car3416,img/car3416.jpg
+AMG,Mercedes-AMG GT S '15,502,478,3461,FR,Road,586,Brand Central|Reward,120000,car2149,img/car2149.jpg
+AMG,Mercedes-AMG GT Safety Car,502,478,3461,FR,Gr.X,594,Brand Central,200000,car3210,img/car3210.jpg
+AMG,Mercedes-AMG GT3 '16,614,531,2921,FR,Gr.3,739,Brand Central,450000,car3224,img/car3224.jpg
+AMG,Mercedes-AMG GT3 '20,614,531,2833,FR,Gr.3,745,Brand Central,480000,car3531,img/car3531.jpg
+AMG,Mercedes-Benz AMG VGT,576,590,3053,FR,VGT,663,Brand Central,1000000,car2055,img/car2055.jpg
+AMG,Mercedes-Benz AMG VGT Racing Series,590,604,2866,FR,VGT,732,Brand Central,1000000,car2076,img/car2076.jpg
+AMG,SLS AMG '10,570,479,3571,FR,Road,588,Brand Central|Used Cars|Reward,360000,car1507,img/car1507.jpg
+AMG,SLS AMG GT3 '11,614,531,2976,FR,Gr.3,721,Brand Central,450000,car1797,img/car1797.jpg
+AMG,SLS AMG Gr.4,419,352,3120,FR,Gr.4,639,Brand Central,350000,car3192,img/car3192.jpg
+Amuse,Amuse Nismo 380RS Super Leggars,380,302,3020,FR,Road,572,Brand Central|Roulette,100000,car1549,img/car1549.jpg
 Amuse,Amuse S2000 GT1 Turbo,616,419,2469,FR,Road,682,Brand Central,250000,,
 Aston Martin,DB11 '16,599,516,3902,FR,Road,598,Brand Central,238000,,
 Aston Martin,DB3S '53,224,224,1887,FR,Gr.X,487,Legend Cars,6000000,,
