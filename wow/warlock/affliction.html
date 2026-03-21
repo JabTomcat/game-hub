@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Affliction Warlock Leveling — WoW — Game Hub</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    /* ── Level range headers ── */
+    .level-range {
+      font-family: var(--font-pixel);
+      font-size: 10px;
+      color: var(--purple);
+      padding: 10px 14px;
+      background: var(--panel);
+      border: 2px solid var(--purple);
+      margin: 2rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .level-range::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--purple);
+      opacity: 0.4;
+    }
+
+    /* ── Tip / info boxes ── */
+    .tip-box {
+      border: 2px solid var(--blue);
+      background: rgba(64,128,224,0.07);
+      padding: 12px 16px;
+      margin-bottom: 1.5rem;
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .tip-box .tip-label {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      color: var(--blue);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .tip-box.purple {
+      border-color: var(--purple);
+      background: rgba(144,96,224,0.07);
+    }
+    .tip-box.purple .tip-label { color: var(--purple); }
+    .tip-box.gold {
+      border-color: var(--gold);
+      background: rgba(240,192,64,0.06);
+    }
+    .tip-box.gold .tip-label { color: var(--gold); }
+
+    /* ── Talent table ── */
+    .data-table td.lvl     { color: var(--purple); font-family: var(--font-pixel); font-size: 7px; white-space: nowrap; }
+    .data-table td.talent  { color: var(--gold); }
+    .data-table td.note    { color: var(--text-dim); font-size: 16px; }
+    .data-table td.key     { color: var(--green); }
+
+    /* ── Ability pills ── */
+    .ability-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+    .ability {
+      font-family: var(--font-pixel);
+      font-size: 7px;
+      padding: 4px 10px;
+      border: 1px solid var(--purple);
+      background: rgba(144,96,224,0.12);
+      color: var(--purple);
+      letter-spacing: 1px;
+    }
+    .ability.dot   { border-color: var(--red);    background: rgba(224,64,64,0.1);    color: #ff8090; }
+    .ability.filler{ border-color: var(--text-dim);background: rgba(80,80,100,0.15);  color: var(--text-dim); }
+    .ability.cd    { border-color: var(--gold);   background: rgba(240,192,64,0.1);   color: var(--gold); }
+    .ability.spend { border-color: var(--blue);   background: rgba(64,128,224,0.1);   color: #70b0ff; }
+    .ability.pet   { border-color: var(--green);  background: rgba(64,192,96,0.1);    color: var(--green); }
+
+    /* ── Priority list ── */
+    .priority-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+    .priority-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 8px 12px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .priority-list li .pnum {
+      font-family: var(--font-pixel);
+      font-size: 8px;
+      color: var(--purple);
+      min-width: 20px;
+      flex-shrink: 0;
+    }
+    .priority-list li strong {
+      color: var(--gold);
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-eyebrow">★ WORLD OF WARCRAFT ★</div>
+    <h1 class="site-title">🩸 AFFLICTION<br>WARLOCK</h1>
+    <p class="site-subtitle">LEVELING GUIDE · LVL 1–90</p>
+    <div class="hp-bar-wrap">
+      <span>HP</span>
+      <div class="hp-bar"><div class="hp-fill"></div></div>
+      <span>MIDNIGHT SEASON 1</span>
+    </div>
+  </header>
+
+  <nav class="breadcrumb">
+    <a href="../../index.html">HUB</a>
+    <span class="sep">▶</span>
+    <a href="../index.html">WORLD OF WARCRAFT</a>
+    <span class="sep">▶</span>
+    <a href="index.html">WARLOCK</a>
+    <span class="sep">▶</span>
+    <span class="current">AFFLICTION LEVELING</span>
+  </nav>
+
+  <div class="divider">AFFLICTION WARLOCK LEVELING</div>
+
+  <main class="container">
+
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-label">SPEC</span><span class="stat-val">AFFLICTION</span></div>
+      <div class="stat"><span class="stat-label">STYLE</span><span class="stat-val">DOT / DRAIN</span></div>
+      <div class="stat"><span class="stat-label">RESOURCE</span><span class="stat-val">SOUL SHARDS</span></div>
+      <div class="stat"><span class="stat-label">MAX LEVEL</span><span class="stat-val">90</span></div>
+    </div>
+
+    <!-- ── OVERVIEW ── -->
+    <div class="tip-box purple">
+      <div class="tip-label">▍ SPEC OVERVIEW</div>
+      Affliction is the most versatile Warlock spec for leveling, especially in groups. The core loop is simple: tag multiple enemies with Agony and Corruption as your DoTs tick them down, then finish off survivors with filler casts or AoE spells. Your demon handles aggro while you keep moving. This DoT-and-move style rewards aggressive play — pull more than you think you can handle and let the damage work for you.
+    </div>
+
+    <!-- ── PET CHOICE ── -->
+    <div class="section-label">▍ PET CHOICE</div>
+
+    <div class="tip-box">
+      <div class="tip-label">▍ WHICH DEMON TO USE</div>
+      <strong style="color:var(--gold)">Voidwalker</strong> — Best for solo leveling. Tanks enemies so you take less damage and can pull more aggressively. Use this most of the time.<br><br>
+      <strong style="color:var(--gold)">Felhunter</strong> — Better for dungeons or group play. The interrupt is useful against troublesome caster enemies.<br><br>
+      <strong style="color:var(--gold)">Imp</strong> — Your starter demon. Fine early on but replace with Voidwalker as soon as possible for solo content.<br><br>
+      Always keep your demon healthy using <strong style="color:var(--gold)">Drain Life</strong> with the Infernal Beneficiary passive — it heals your pet as it heals you.
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <div class="level-range">LVL 1 — 10 · THE BASICS</div>
+
+    <div class="section-label">▍ ABILITIES AVAILABLE</div>
+    <div class="ability-list">
+      <span class="ability filler">Shadow Bolt</span>
+      <span class="ability dot">Corruption</span>
+      <span class="ability pet">Summon Imp</span>
+    </div>
+
+    <div class="section-label">▍ WHAT TO DO</div>
+    <div class="tip-box">
+      <div class="tip-label">▍ LEVELS 1–10</div>
+      <strong style="color:var(--gold)">Level 1</strong> — Shadow Bolt is your only damage spell. Spam it.<br><br>
+      <strong style="color:var(--gold)">Level 2</strong> — Corruption becomes available but starts with a 2-second cast time. Use it to tag and soften multiple enemies before Shadow Bolting them down. It is worth casting on enemies that will live long enough to take a few ticks.<br><br>
+      <strong style="color:var(--gold)">Level 3</strong> — Summon Imp. Your first pet. It deals additional damage and helps carry you through early levels. Keep it alive.
+    </div>
+
+    <div class="section-label">▍ TALENTS — LEVELS 1–10</div>
+    <div class="tip-box gold">
+      <div class="tip-label">▍ NOTE</div>
+      Your first talent point is available at Level 10. Focus on surviving and learning your rotation before then. No talent decisions needed yet.
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <div class="level-range">LVL 10 — 20 · TALENTS BEGIN</div>
+
+    <div class="section-label">▍ ABILITIES UNLOCKED</div>
+    <div class="ability-list">
+      <span class="ability dot">Agony</span>
+      <span class="ability pet">Summon Voidwalker</span>
+      <span class="ability filler">Drain Life</span>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">▍ KEY UNLOCK — AGONY (LVL 11)</div>
+      At Level 11 you unlock Agony — your most important DoT. From this point, always prioritise maintaining Agony on your target over Corruption when tagging mobs. It ramps up in damage the longer it ticks, so keep it rolling. Switch to the Voidwalker now for solo content.
+    </div>
+
+    <div class="section-label">▍ TALENT PRIORITY — LEVELS 10–20</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>LEVEL</th>
+          <th>TALENT</th>
+          <th>WHY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lvl">10</td><td class="talent">Agony (baseline)</td><td class="note">Unlocked automatically — your core DoT</td></tr>
+        <tr><td class="lvl">10</td><td class="talent">Nightfall</td><td class="note">Gives your DoTs a chance to make Shadow Bolt instant cast — great free damage while moving</td></tr>
+        <tr><td class="lvl">12</td><td class="talent">Writhe in Agony</td><td class="note">Makes Agony start at higher stacks — it hits harder sooner</td></tr>
+        <tr><td class="lvl">14</td><td class="talent">Absolute Corruption</td><td class="note">Makes Corruption permanent on targets — set it and forget it</td></tr>
+        <tr><td class="lvl">16</td><td class="talent">Sow the Seeds</td><td class="note">Seed of Corruption hits 2 additional targets — strong for multi-target</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═══════════════════════════════════════ -->
+    <div class="level-range">LVL 13 · UNSTABLE AFFLICTION</div>
+
+    <div class="section-label">▍ ABILITIES UNLOCKED</div>
+    <div class="ability-list">
+      <span class="ability spend">Unstable Affliction</span>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">▍ KEY UNLOCK — UNSTABLE AFFLICTION (LVL 13)</div>
+      At Level 13 you get Unstable Affliction, your Soul Shard spender for single and dual target situations. Spend shards on Unstable Affliction when fighting 1 or 2 targets. A handy trick: cast it on dying enemies to get a free Soul Shard back before they die.
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <div class="level-range">LVL 17 · HAUNT</div>
+
+    <div class="section-label">▍ ABILITIES UNLOCKED</div>
+    <div class="ability-list">
+      <span class="ability cd">Haunt</span>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">▍ KEY UNLOCK — HAUNT (LVL 17)</div>
+      Haunt is a high-priority spell that amplifies the damage of all your DoTs on the target. Cast it on your main target on cooldown — it should be used every time it is available. Never sit on it. It also returns a Soul Shard when the target dies.
+    </div>
+
+    <div class="section-label">▍ TALENT PRIORITY — LEVELS 17–30</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>LEVEL</th>
+          <th>TALENT</th>
+          <th>WHY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lvl">18</td><td class="talent">Vile Taint</td><td class="note">AoE slow + Agony application — very good for multi-target pulls</td></tr>
+        <tr><td class="lvl">20</td><td class="talent">Soul Swap</td><td class="note">Copy your DoTs from one target to another — saves time on multi-target</td></tr>
+        <tr><td class="lvl">22</td><td class="talent">Dark Pact</td><td class="note">Strong personal defensive — burns a bit of your demon's health to shield yourself</td></tr>
+        <tr><td class="lvl">24</td><td class="talent">Phantom Singularity</td><td class="note">A useful AoE cooldown that also heals you</td></tr>
+        <tr><td class="lvl">26</td><td class="talent">Drain Soul</td><td class="note">Replaces Shadow Bolt as your filler — deals more damage and generates a Shard on kill</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═══════════════════════════════════════ -->
+    <div class="level-range">LVL 33 · DARK HARVEST</div>
+
+    <div class="section-label">▍ ABILITIES UNLOCKED</div>
+    <div class="ability-list">
+      <span class="ability cd">Dark Harvest</span>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">▍ KEY UNLOCK — DARK HARVEST (LVL 33)</div>
+      Dark Harvest is a powerful cooldown that consumes Soul Shards for a big damage window. Use it on cooldown, but only after you have applied at least one DoT to every target you are currently fighting — it benefits from having enemies afflicted. Line it up with Haunt for maximum damage.
+    </div>
+
+    <div class="section-label">▍ TALENT PRIORITY — LEVELS 30–50</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>LEVEL</th>
+          <th>TALENT</th>
+          <th>WHY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lvl">30</td><td class="talent">Malefic Rapture</td><td class="note">AoE shard spender — use instead of Unstable Affliction when 3+ targets are up</td></tr>
+        <tr><td class="lvl">32</td><td class="talent">Cascading Calamity</td><td class="note">Malefic Rapture increases DoT damage — strong passive synergy</td></tr>
+        <tr><td class="lvl">35</td><td class="talent">Inevitable Demise</td><td class="note">Drain Life stacks up to massively increase its damage — great for sustained fights</td></tr>
+        <tr><td class="lvl">38</td><td class="talent">Summon Darkglare</td><td class="note">Major cooldown — summons a Darkglare that amplifies all your DoTs. Use on cooldown.</td></tr>
+        <tr><td class="lvl">42</td><td class="talent">Rampant Afflictions</td><td class="note">Unstable Affliction can now hit 3 targets — great for small packs</td></tr>
+        <tr><td class="lvl">45</td><td class="talent">Gateway Mastery</td><td class="note">Reduces Demonic Gateway cooldown — useful in tight spaces where mounts are not allowed</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ═══════════════════════════════════════ -->
+    <div class="level-range">LVL 50–90 · HERO TALENTS</div>
+
+    <div class="tip-box purple">
+      <div class="tip-label">▍ HERO TALENTS (UNLOCKED AT LVL 71)</div>
+      At Level 71 you choose between two Hero Talent trees. Both are good — pick based on playstyle:<br><br>
+      <strong style="color:var(--gold)">Soul Harvester</strong> — Spend Soul Shards aggressively. More dynamic gameplay with lots of spending. Great if you enjoy fast-paced rotations.<br><br>
+      <strong style="color:var(--gold)">Hellcaller</strong> — Wither replaces Corruption and adds a second Shadowflame DoT. More methodical, burst-focused every minute with Malevolence. Pick this if you prefer a more deliberate pace.
+    </div>
+
+    <div class="section-label">▍ TALENT PRIORITY — LEVELS 50–90</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>LEVEL</th>
+          <th>TALENT</th>
+          <th>WHY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="lvl">50</td><td class="talent">Malefic Grasp</td><td class="note">Drain Soul channels increase the damage of all active DoTs — big sustained damage upgrade</td></tr>
+        <tr><td class="lvl">55</td><td class="talent">Soul Rot</td><td class="note">Strong AoE cooldown that also buffs your next drain</td></tr>
+        <tr><td class="lvl">58</td><td class="talent">Seed of Corruption</td><td class="note">Main multi-target shard spender — use instead of Malefic Rapture on 3+ stacked targets</td></tr>
+        <tr><td class="lvl">62</td><td class="talent">Bonds of Fel</td><td class="note">AoE burst when kiting targets — useful in hectic situations</td></tr>
+        <tr><td class="lvl">71</td><td class="talent key">CHOOSE HERO TREE</td><td class="note">Soul Harvester (aggressive spending) or Hellcaller (burst windows)</td></tr>
+        <tr><td class="lvl">75</td><td class="talent">Rot and Decay</td><td class="note">Combine with Essence Drain for dramatically improved survivability when soloing hard content</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── ROTATION ── -->
+    <div class="divider">ROTATION & BASICS</div>
+
+    <div class="section-label">▍ CORE CONCEPT</div>
+    <div class="tip-box purple">
+      <div class="tip-label">▍ HOW AFFLICTION WORKS</div>
+      Affliction revolves around maintaining damage over time effects on your targets while spending Soul Shards on powerful spells. Soul Shards are generated by your DoTs and by killing enemies, and spent on hard-hitting abilities. Never sit at 5 Shards — that is wasted potential. The basic loop is: apply DoTs → cast Haunt → spend Shards → refresh DoTs → repeat.
+    </div>
+
+    <div class="section-label">▍ SINGLE TARGET PRIORITY</div>
+    <ul class="priority-list">
+      <li><span class="pnum">1</span>Maintain <strong>Agony</strong> on the target at all times — refresh before it falls off</li>
+      <li><span class="pnum">2</span>Maintain <strong>Corruption</strong> on the target at all times</li>
+      <li><span class="pnum">3</span>Cast <strong>Haunt</strong> on cooldown — this amplifies all your DoTs</li>
+      <li><span class="pnum">4</span>Cast <strong>Dark Harvest</strong> on cooldown — make sure at least one DoT is on each target first</li>
+      <li><span class="pnum">5</span>Cast <strong>Unstable Affliction</strong> when at 4–5 Soul Shards to avoid capping</li>
+      <li><span class="pnum">6</span>Cast <strong>Drain Soul</strong> as your filler while waiting on cooldowns</li>
+    </ul>
+
+    <div class="section-label">▍ MULTI-TARGET (3+ ENEMIES)</div>
+    <ul class="priority-list">
+      <li><span class="pnum">1</span>Apply <strong>Agony</strong> to all targets</li>
+      <li><span class="pnum">2</span>Use <strong>Seed of Corruption</strong> as your main shard spender — it hits everything</li>
+      <li><span class="pnum">3</span>Use <strong>Vile Taint</strong> if talented — applies Agony to all nearby targets instantly</li>
+      <li><span class="pnum">4</span>Cast <strong>Dark Harvest</strong> after DoTs are applied to all targets</li>
+      <li><span class="pnum">5</span>Use <strong>Nightfall</strong> procs (instant Shadow Bolt) immediately — free damage while moving</li>
+    </ul>
+
+    <div class="section-label">▍ KEY TIPS</div>
+    <div class="tip-box">
+      <div class="tip-label">▍ THINGS TO REMEMBER</div>
+      Refresh <strong style="color:var(--gold)">Agony within the pandemic window</strong> — you can refresh it when it has 5 or fewer seconds remaining without losing any duration. Don't let it drop.<br><br>
+      <strong style="color:var(--gold)">Drain Soul on dying enemies</strong> — if a target is about to die, switch to Drain Soul for an easy free Soul Shard.<br><br>
+      <strong style="color:var(--gold)">React to Shard Instability procs</strong> — these give you a free Unstable Affliction cast. Use it immediately.<br><br>
+      <strong style="color:var(--gold)">Summon Darkglare timing</strong> — before using this cooldown, make sure Agony has been refreshed so it lasts the full duration of the Darkglare window.<br><br>
+      <strong style="color:var(--gold)">Life Tap</strong> — if you are running low on mana, Life Tap converts health to mana. Your Voidwalker and Drain Life keep your health topped up so this is usually safe to use.
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>█</span> GAME HUB &nbsp;·&nbsp; GUIDE SOURCE: ICY-VEINS.COM &nbsp;·&nbsp; GITHUB PAGES <span>█</span>
+  </footer>
+
+</body>
+</html>
