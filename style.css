@@ -307,7 +307,8 @@ body::after {
   transition: border-color 0.1s, transform 0.1s;
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
 }
@@ -361,6 +362,7 @@ body::after {
 
 .card-body {
   padding: 0.8rem 1rem;
+  flex: 1;
 }
 
 .card-desc {
