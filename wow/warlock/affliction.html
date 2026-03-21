@@ -39,7 +39,7 @@
       background: rgba(64,128,224,0.07);
       padding: 12px 16px;
       margin-bottom: 1.5rem;
-      font-size: 18px;
+      font-size: 13px;
       color: var(--text);
       line-height: 1.6;
     }
@@ -62,7 +62,7 @@
     .tip-box.gold .tip-label { color: var(--gold); }
 
     /* ── Talent table ── */
-    .data-table td.lvl     { color: var(--purple); font-family: var(--font-pixel); font-size: 7px; white-space: nowrap; }
+    .data-table td.lvl     { color: var(--purple); font-weight: 500; font-size: 12px; white-space: nowrap; }
     .data-table td.talent  { color: var(--gold); }
     .data-table td.note    { color: var(--text-dim); font-size: 16px; }
     .data-table td.key     { color: var(--green); }
@@ -76,7 +76,7 @@
     }
     .ability {
       font-family: var(--font-pixel);
-      font-size: 7px;
+      font-size: 11px;
       padding: 4px 10px;
       border: 1px solid var(--purple);
       background: rgba(144,96,224,0.12);
@@ -104,7 +104,7 @@
       padding: 8px 12px;
       background: var(--panel);
       border: 1px solid var(--border);
-      font-size: 18px;
+      font-size: 13px;
       color: var(--text);
       line-height: 1.4;
     }
@@ -207,52 +207,52 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td class="lvl">10</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Fel Domination</td><td class="note">Resummon your demon instantly — critical if Voidwalker dies mid-pull</td></tr>
-        <tr><td class="lvl">10</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Nightfall</td><td class="note">DoTs give chance to make Shadow Bolt instant — free damage while moving</td></tr>
-        <tr><td class="lvl">12</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Soul Conduit</td><td class="note">Chance to refund a Soul Shard when you spend one — keeps resource flowing</td></tr>
-        <tr><td class="lvl">12</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Writhe in Agony</td><td class="note">Agony starts at higher stacks — hits harder sooner</td></tr>
-        <tr><td class="lvl">13</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Unstable Affliction</td><td class="note">Unlocked automatically — your main Soul Shard spender on 1–2 targets</td></tr>
-        <tr><td class="lvl">14</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Demonic Embrace</td><td class="note">Increases Stamina — straightforward survivability while leveling</td></tr>
-        <tr><td class="lvl">14</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Absolute Corruption</td><td class="note">Makes Corruption permanent on targets — set it and forget it</td></tr>
-        <tr><td class="lvl">16</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Demonic Inspiration</td><td class="note">Demon deals more damage — benefits Voidwalker threat and damage</td></tr>
-        <tr><td class="lvl">16</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Sow the Seeds</td><td class="note">Seed of Corruption hits 2 additional targets — strong for multi-target</td></tr>
-        <tr><td class="lvl">17</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Haunt</td><td class="note">Unlocked automatically — amplifies all your DoTs, use on cooldown every time</td></tr>
-        <tr><td class="lvl">18</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Wrathful Minion</td><td class="note">Further increases pet damage — stacks with Demonic Inspiration</td></tr>
-        <tr><td class="lvl">18</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Vile Taint</td><td class="note">AoE slow + instant Agony on all nearby targets — strong for multi-target pulls</td></tr>
-        <tr><td class="lvl">20</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Burning Rush</td><td class="note">Movement speed at cost of health — fast travel between packs</td></tr>
-        <tr><td class="lvl">20</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Soul Swap</td><td class="note">Copy DoTs from one target to another — saves time on multi-target</td></tr>
-        <tr><td class="lvl">22</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Fiendish Stride</td><td class="note">Reduces Burning Rush health cost — makes it safe to use constantly</td></tr>
-        <tr><td class="lvl">22</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Dark Pact</td><td class="note">Strong personal defensive — burns demon health to shield yourself</td></tr>
-        <tr><td class="lvl">24</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Shadowflame</td><td class="note">Short-range AoE that slows enemies — panic button if melee reach you</td></tr>
-        <tr><td class="lvl">24</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Phantom Singularity</td><td class="note">AoE cooldown that also heals you</td></tr>
-        <tr><td class="lvl">26</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Drain Soul</td><td class="note">Replaces Shadow Bolt as filler — more damage and generates a Shard on kill</td></tr>
-        <tr><td class="lvl">28</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Inquisitor's Gaze</td><td class="note">Passive damage eye — free damage with no resource cost</td></tr>
-        <tr><td class="lvl">30</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Malefic Rapture</td><td class="note">AoE shard spender — use instead of Unstable Affliction on 3+ targets</td></tr>
-        <tr><td class="lvl">32</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Demonic Fortitude</td><td class="note">Increases max health of you and your demon — solid passive survivability</td></tr>
-        <tr><td class="lvl">32</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Cascading Calamity</td><td class="note">Malefic Rapture increases DoT damage — strong passive synergy</td></tr>
-        <tr><td class="lvl">33</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Dark Harvest</td><td class="note">Unlocked automatically — big cooldown, use after DoTs are on all targets</td></tr>
-        <tr><td class="lvl">35</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Inevitable Demise</td><td class="note">Drain Life stacks to massively increase its damage — great sustained sustain</td></tr>
-        <tr><td class="lvl">36</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Mortal Coil</td><td class="note">Fears an enemy and heals you — great emergency button when in danger</td></tr>
-        <tr><td class="lvl">38</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Summon Darkglare</td><td class="note">Major cooldown — summons Darkglare that amplifies all DoTs, use on cooldown</td></tr>
-        <tr><td class="lvl">40</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Demonic Gateway</td><td class="note">Portal for you and party — useful in dungeons and tight zones</td></tr>
-        <tr><td class="lvl">42</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Rampant Afflictions</td><td class="note">Unstable Affliction can hit 3 targets — great for small packs</td></tr>
-        <tr><td class="lvl">44</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Infernal Pact</td><td class="note">Absorb shield scaling with demon power — pairs well with buffed Voidwalker</td></tr>
-        <tr><td class="lvl">45</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Gateway Mastery</td><td class="note">Reduces Demonic Gateway cooldown — useful where mounts are not allowed</td></tr>
-        <tr><td class="lvl">48</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Soul Link ⭐</td><td class="note">Splits damage between you and demon — one of the best solo survivability tools in the game</td></tr>
-        <tr><td class="lvl">50</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Malefic Grasp</td><td class="note">Drain Soul channels increase damage of all active DoTs — big sustained upgrade</td></tr>
-        <tr><td class="lvl">52</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Amplify Curse</td><td class="note">Next curse is instant cast — apply debuffs quickly on the move</td></tr>
-        <tr><td class="lvl">55</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Soul Rot</td><td class="note">Strong AoE cooldown that buffs your next drain</td></tr>
-        <tr><td class="lvl">56</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Curse of Exhaustion</td><td class="note">Slows enemies — handy kiting tool when pulling large groups</td></tr>
-        <tr><td class="lvl">58</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Seed of Corruption</td><td class="note">Main multi-target shard spender — use on 3+ stacked targets</td></tr>
-        <tr><td class="lvl">60</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Summon Soulkeeper</td><td class="note">Passive AoE damage from stored enemy souls — strong for multi-target</td></tr>
-        <tr><td class="lvl">62</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Bonds of Fel</td><td class="note">AoE burst when kiting — useful in hectic pulls</td></tr>
-        <tr><td class="lvl">64</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Soulburn</td><td class="note">Empowers next spell — use with Demonic Circle for instant teleport or Healthstone for bigger heal</td></tr>
-        <tr><td class="lvl">68</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Demonic Circle</td><td class="note">Place a circle and teleport back to it — excellent defensive escape tool</td></tr>
-        <tr><td class="lvl">71</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent key">CHOOSE HERO TREE</td><td class="note">Soul Harvester (aggressive spending) or Hellcaller (burst windows) — see note above</td></tr>
-        <tr><td class="lvl">72</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Fel Pact</td><td class="note">Reduces Fel Domination cooldown — resummon demon more often</td></tr>
-        <tr><td class="lvl">75</td><td style="color:var(--purple);font-family:var(--font-pixel);font-size:7px">SPEC</td><td class="talent">Rot and Decay</td><td class="note">Combine with Essence Drain for dramatically improved survivability on hard content</td></tr>
-        <tr><td class="lvl">76</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Grim Feast</td><td class="note">Drain Life generates additional healing — significantly improves sustain on long pulls</td></tr>
-        <tr><td class="lvl">80</td><td style="color:var(--gold);font-family:var(--font-pixel);font-size:7px">CLASS</td><td class="talent">Dark Accord</td><td class="note">Reduces Dark Pact cooldown — more frequent access to personal absorb shield</td></tr>
+        <tr><td class="lvl">10</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Fel Domination</td><td class="note">Resummon your demon instantly — critical if Voidwalker dies mid-pull</td></tr>
+        <tr><td class="lvl">10</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Nightfall</td><td class="note">DoTs give chance to make Shadow Bolt instant — free damage while moving</td></tr>
+        <tr><td class="lvl">12</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Soul Conduit</td><td class="note">Chance to refund a Soul Shard when you spend one — keeps resource flowing</td></tr>
+        <tr><td class="lvl">12</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Writhe in Agony</td><td class="note">Agony starts at higher stacks — hits harder sooner</td></tr>
+        <tr><td class="lvl">13</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Unstable Affliction</td><td class="note">Unlocked automatically — your main Soul Shard spender on 1–2 targets</td></tr>
+        <tr><td class="lvl">14</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Demonic Embrace</td><td class="note">Increases Stamina — straightforward survivability while leveling</td></tr>
+        <tr><td class="lvl">14</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Absolute Corruption</td><td class="note">Makes Corruption permanent on targets — set it and forget it</td></tr>
+        <tr><td class="lvl">16</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Demonic Inspiration</td><td class="note">Demon deals more damage — benefits Voidwalker threat and damage</td></tr>
+        <tr><td class="lvl">16</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Sow the Seeds</td><td class="note">Seed of Corruption hits 2 additional targets — strong for multi-target</td></tr>
+        <tr><td class="lvl">17</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Haunt</td><td class="note">Unlocked automatically — amplifies all your DoTs, use on cooldown every time</td></tr>
+        <tr><td class="lvl">18</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Wrathful Minion</td><td class="note">Further increases pet damage — stacks with Demonic Inspiration</td></tr>
+        <tr><td class="lvl">18</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Vile Taint</td><td class="note">AoE slow + instant Agony on all nearby targets — strong for multi-target pulls</td></tr>
+        <tr><td class="lvl">20</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Burning Rush</td><td class="note">Movement speed at cost of health — fast travel between packs</td></tr>
+        <tr><td class="lvl">20</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Soul Swap</td><td class="note">Copy DoTs from one target to another — saves time on multi-target</td></tr>
+        <tr><td class="lvl">22</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Fiendish Stride</td><td class="note">Reduces Burning Rush health cost — makes it safe to use constantly</td></tr>
+        <tr><td class="lvl">22</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Dark Pact</td><td class="note">Strong personal defensive — burns demon health to shield yourself</td></tr>
+        <tr><td class="lvl">24</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Shadowflame</td><td class="note">Short-range AoE that slows enemies — panic button if melee reach you</td></tr>
+        <tr><td class="lvl">24</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Phantom Singularity</td><td class="note">AoE cooldown that also heals you</td></tr>
+        <tr><td class="lvl">26</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Drain Soul</td><td class="note">Replaces Shadow Bolt as filler — more damage and generates a Shard on kill</td></tr>
+        <tr><td class="lvl">28</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Inquisitor's Gaze</td><td class="note">Passive damage eye — free damage with no resource cost</td></tr>
+        <tr><td class="lvl">30</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Malefic Rapture</td><td class="note">AoE shard spender — use instead of Unstable Affliction on 3+ targets</td></tr>
+        <tr><td class="lvl">32</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Demonic Fortitude</td><td class="note">Increases max health of you and your demon — solid passive survivability</td></tr>
+        <tr><td class="lvl">32</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Cascading Calamity</td><td class="note">Malefic Rapture increases DoT damage — strong passive synergy</td></tr>
+        <tr><td class="lvl">33</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Dark Harvest</td><td class="note">Unlocked automatically — big cooldown, use after DoTs are on all targets</td></tr>
+        <tr><td class="lvl">35</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Inevitable Demise</td><td class="note">Drain Life stacks to massively increase its damage — great sustained sustain</td></tr>
+        <tr><td class="lvl">36</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Mortal Coil</td><td class="note">Fears an enemy and heals you — great emergency button when in danger</td></tr>
+        <tr><td class="lvl">38</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Summon Darkglare</td><td class="note">Major cooldown — summons Darkglare that amplifies all DoTs, use on cooldown</td></tr>
+        <tr><td class="lvl">40</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Demonic Gateway</td><td class="note">Portal for you and party — useful in dungeons and tight zones</td></tr>
+        <tr><td class="lvl">42</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Rampant Afflictions</td><td class="note">Unstable Affliction can hit 3 targets — great for small packs</td></tr>
+        <tr><td class="lvl">44</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Infernal Pact</td><td class="note">Absorb shield scaling with demon power — pairs well with buffed Voidwalker</td></tr>
+        <tr><td class="lvl">45</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Gateway Mastery</td><td class="note">Reduces Demonic Gateway cooldown — useful where mounts are not allowed</td></tr>
+        <tr><td class="lvl">48</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Soul Link ⭐</td><td class="note">Splits damage between you and demon — one of the best solo survivability tools in the game</td></tr>
+        <tr><td class="lvl">50</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Malefic Grasp</td><td class="note">Drain Soul channels increase damage of all active DoTs — big sustained upgrade</td></tr>
+        <tr><td class="lvl">52</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Amplify Curse</td><td class="note">Next curse is instant cast — apply debuffs quickly on the move</td></tr>
+        <tr><td class="lvl">55</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Soul Rot</td><td class="note">Strong AoE cooldown that buffs your next drain</td></tr>
+        <tr><td class="lvl">56</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Curse of Exhaustion</td><td class="note">Slows enemies — handy kiting tool when pulling large groups</td></tr>
+        <tr><td class="lvl">58</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Seed of Corruption</td><td class="note">Main multi-target shard spender — use on 3+ stacked targets</td></tr>
+        <tr><td class="lvl">60</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Summon Soulkeeper</td><td class="note">Passive AoE damage from stored enemy souls — strong for multi-target</td></tr>
+        <tr><td class="lvl">62</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Bonds of Fel</td><td class="note">AoE burst when kiting — useful in hectic pulls</td></tr>
+        <tr><td class="lvl">64</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Soulburn</td><td class="note">Empowers next spell — use with Demonic Circle for instant teleport or Healthstone for bigger heal</td></tr>
+        <tr><td class="lvl">68</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Demonic Circle</td><td class="note">Place a circle and teleport back to it — excellent defensive escape tool</td></tr>
+        <tr><td class="lvl">71</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent key">CHOOSE HERO TREE</td><td class="note">Soul Harvester (aggressive spending) or Hellcaller (burst windows) — see note above</td></tr>
+        <tr><td class="lvl">72</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Fel Pact</td><td class="note">Reduces Fel Domination cooldown — resummon demon more often</td></tr>
+        <tr><td class="lvl">75</td><td style="color:var(--purple);font-weight:500;font-size:12px">SPEC</td><td class="talent">Rot and Decay</td><td class="note">Combine with Essence Drain for dramatically improved survivability on hard content</td></tr>
+        <tr><td class="lvl">76</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Grim Feast</td><td class="note">Drain Life generates additional healing — significantly improves sustain on long pulls</td></tr>
+        <tr><td class="lvl">80</td><td style="color:var(--gold);font-weight:500;font-size:12px">CLASS</td><td class="talent">Dark Accord</td><td class="note">Reduces Dark Pact cooldown — more frequent access to personal absorb shield</td></tr>
       </tbody>
     </table>
 
