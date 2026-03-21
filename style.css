@@ -340,6 +340,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 80px;
 }
 
 .card-icon   { font-size: 28px; line-height: 1; }
